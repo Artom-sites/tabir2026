@@ -2653,6 +2653,7 @@ a {
     margin-top: var(--space-md);
     margin-bottom: var(--space-sm);
     position: relative;
+    box-shadow: none !important;
 }
 
 .registration-form .btn-primary:disabled {
