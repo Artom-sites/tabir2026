@@ -978,22 +978,62 @@ function initRegistrationForm() {
 
     if (!form || !addChildBtn || !childrenContainer) return;
 
-    // Handle phone country change
+    // Country Selector Dropdown
+    const countrySelector = document.getElementById('countrySelector');
+    const countryDropdown = document.getElementById('countryDropdown');
+    const selectedFlag = document.getElementById('selectedFlag');
+    const selectedCode = document.getElementById('selectedCode');
+    const phoneCountryInput = document.getElementById('phoneCountry');
     const phoneInput = document.getElementById('phone');
-    const phoneHint = document.querySelector('.form-hint');
-    const countryRadios = document.querySelectorAll('input[name="phoneCountry"]');
 
-    countryRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if (e.target.value === 'ukraine') {
-                phoneInput.placeholder = '+380 XX XXX XX XX';
-                phoneHint.textContent = 'Приклад: +380 50 123 45 67';
-            } else {
-                phoneInput.placeholder = '+49 XXX XXXXXXX';
-                phoneHint.textContent = 'Приклад: +49 176 12345678';
-            }
+    if (countrySelector && countryDropdown) {
+        // Toggle dropdown
+        countrySelector.addEventListener('click', (e) => {
+            e.stopPropagation();
+            countrySelector.classList.toggle('open');
         });
-    });
+
+        // Select country option
+        countryDropdown.querySelectorAll('.country-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const country = option.dataset.country;
+                const flag = option.dataset.flag;
+                const code = option.dataset.code;
+
+                selectedFlag.textContent = flag;
+                selectedCode.textContent = code;
+                phoneCountryInput.value = country;
+
+                // Update placeholder based on country
+                if (country === 'ukraine') {
+                    phoneInput.placeholder = 'XX XXX XX XX';
+                } else {
+                    phoneInput.placeholder = 'XXX XXXXXXX';
+                }
+
+                // Mark selected
+                countryDropdown.querySelectorAll('.country-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                option.classList.add('selected');
+
+                countrySelector.classList.remove('open');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            countrySelector.classList.remove('open');
+        });
+
+        // Set initial selected state for Germany
+        const germanyOption = countryDropdown.querySelector('[data-country="germany"]');
+        if (germanyOption) {
+            germanyOption.classList.add('selected');
+        }
+    }
 
     // Add child entry
     addChildBtn.addEventListener('click', () => {

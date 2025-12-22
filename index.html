@@ -719,25 +719,30 @@
                             </div>
 
                             <div class="form-group">
-                                <label data-i18n="register.form.country">Країна телефону *</label>
-                                <div class="radio-group">
-                                    <label class="radio-label">
-                                        <input type="radio" name="phoneCountry" value="ukraine" checked>
-                                        <span data-i18n="register.form.countryUA">🇺🇦 Україна</span>
-                                    </label>
-                                    <label class="radio-label">
-                                        <input type="radio" name="phoneCountry" value="germany">
-                                        <span data-i18n="register.form.countryDE">🇩🇪 Німеччина</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="phone" data-i18n="register.form.phone">Телефон *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+380 XX XXX XX XX"
-                                    data-i18n-placeholder="register.form.phonePlaceholder">
-                                <small class="form-hint" data-i18n="register.form.phoneHint">Приклад: +380 50 123 45
-                                    67</small>
+                                <div class="phone-input-wrapper">
+                                    <div class="country-selector" id="countrySelector">
+                                        <span class="country-flag" id="selectedFlag">🇩🇪</span>
+                                        <span class="country-code" id="selectedCode">+49</span>
+                                        <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                        <div class="country-dropdown" id="countryDropdown">
+                                            <div class="country-option" data-country="germany" data-flag="🇩🇪"
+                                                data-code="+49">
+                                                <span>🇩🇪</span> <span>Німеччина (+49)</span>
+                                            </div>
+                                            <div class="country-option" data-country="ukraine" data-flag="🇺🇦"
+                                                data-code="+380">
+                                                <span>🇺🇦</span> <span>Україна (+380)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="tel" id="phone" name="phone" required placeholder="XXX XXXXXXX"
+                                        data-i18n-placeholder="register.form.phonePlaceholder">
+                                    <input type="hidden" id="phoneCountry" name="phoneCountry" value="germany">
+                                </div>
                             </div>
                         </div>
 
