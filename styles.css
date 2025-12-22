@@ -2848,6 +2848,23 @@ a {
     margin-top: var(--space-xs);
 }
 
+.footer-credit {
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.footer-credit a {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-credit a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 /* ==========================================
    STICKY CTA - Mobile Optimized
    ========================================== */
