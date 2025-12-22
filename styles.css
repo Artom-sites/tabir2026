@@ -2585,16 +2585,25 @@ a {
 .phone-input-wrapper input[type="tel"] {
     flex: 1;
     padding: 14px 16px;
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
     font-family: var(--font-body);
     font-size: 0.95rem;
     color: var(--color-text);
     outline: none;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .phone-input-wrapper input[type="tel"]::placeholder {
     color: rgba(255, 255, 255, 0.4);
+}
+
+.phone-input-wrapper input[type="tel"]:focus {
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* Radio Group - keep for other uses */
