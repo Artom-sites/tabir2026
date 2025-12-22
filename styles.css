@@ -2483,8 +2483,8 @@ a {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: var(--radius-sm);
-    overflow: hidden;
     transition: all var(--transition-base);
+    position: relative;
 }
 
 .phone-input-wrapper:focus-within {
