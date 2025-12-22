@@ -2501,35 +2501,26 @@ a {
 }
 
 .radio-label input[type="radio"] {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
     cursor: pointer;
-    accent-color: var(--color-accent);
     margin: 0;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     background: transparent;
-    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .radio-label input[type="radio"]:checked {
     border-color: var(--color-accent);
     background: var(--color-accent);
-}
-
-.radio-label input[type="radio"]:checked::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px rgba(10, 16, 20, 0.9);
 }
 
 .radio-label input[type="radio"]:focus {
