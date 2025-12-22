@@ -2499,6 +2499,7 @@ a {
     padding: 12px 12px;
     background: rgba(255, 255, 255, 0.06);
     border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
     cursor: pointer;
     position: relative;
     transition: background 0.2s ease;
@@ -2533,9 +2534,9 @@ a {
 
 .country-dropdown {
     position: absolute;
-    top: calc(100% + 4px);
+    bottom: calc(100% + 4px);
     left: 0;
-    min-width: 180px;
+    right: 0;
     background: rgba(20, 25, 30, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -2545,7 +2546,7 @@ a {
     z-index: 100;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-8px);
+    transform: translateY(8px);
     transition: all 0.2s ease;
 }
 
@@ -2553,7 +2554,6 @@ a {
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateY(0) !important;
-    display: block !important;
 }
 
 .country-option {
