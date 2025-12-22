@@ -2309,12 +2309,12 @@ a {
 }
 
 .register-card .btn-primary {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     color: var(--color-text);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: none;
 }
 
 .register-note {
@@ -2323,8 +2323,7 @@ a {
 }
 
 .register-card .btn-primary:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
