@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Зимовий Табір у Горах | 4 дні для молодих сімей</title>
+    <meta name="description"
+        content="4-денний християнський табір для молодих пар та сімей у горах Німеччини. Лижі, баня, спорт, бізнес-тренінги та духовне зростання.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+
+<body class="alternative-design">
+
+    <!-- Language Toggle -->
+    <button class="theme-toggle" id="languageToggle" aria-label="Змінити мову" data-i18n-aria="nav.langLabel">
+        <span class="lang-text">UA</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="mountains mountains-back"></div>
+            <div class="mountains mountains-mid"></div>
+            <div class="mountains mountains-front"></div>
+            <div class="snow-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span data-i18n="hero.location">Шварцвальд, Німеччина</span>
+            </span>
+            <h1 class="hero-title" data-i18n="hero.title" data-i18n-html="true">Зимовий табір<br><em>для молодих
+                    сімей</em></h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Християнський табір для молодих пар — лижі, спорт,
+                тренінги та духовне зростання разом.</p>
+            <div class="hero-meta">
+                <span class="meta-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <span data-i18n="hero.dates">9–12 лютого</span>
+                </span>
+                <span class="meta-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <span data-i18n="hero.couples">15–20 сімей</span>
+                </span>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-text">
+                    <h2 data-i18n="about.title">Що це таке?</h2>
+                    <p class="lead" data-i18n="about.lead">Чотири дні в горах — щоб провести час разом як сім'я,
+                        навчитися новому і зміцнити
+                        стосунки в оточенні інших молодих пар.</p>
+                    <p data-i18n="about.text1">Це не просто відпочинок. Не тільки навчання. Не лише спорт.</p>
+                    <p data-i18n="about.text2" data-i18n-html="true">Це <strong>час для вашої сімʼї</strong> — для
+                        активного відпочинку, практичних тренінгів з
+                        фінансів та
+                        служіння, і глибокого спілкування з Богом та одне з одним.</p>
+                </div>
+                <div class="about-features reveal">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+                                <path d="M12 8l-4 4 4 4 4-4-4-4z" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="features.ski.title">Лижі ⛷️</h3>
+                        <p data-i18n="features.ski.desc">Катання на підйомниках та схилах</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="features.training.title">Тренінги</h3>
+                        <p data-i18n="features.training.desc">Фінанси та проповіді</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="features.activities.title">Активності</h3>
+                        <p data-i18n="features.activities.desc">Баня, більярд, боулінг, волейбол</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="features.spiritual.title">Духовна частина</h3>
+                        <p data-i18n="features.spiritual.desc">Молитва, навчання і спілкування</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="section program" id="program">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="program.title">Програма табору</h2>
+                <p data-i18n="program.subtitle">Чотири насичені дні — активності, навчання та спілкування з Богом.</p>
+            </div>
+
+            <div class="tabs reveal">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="day1">
+                        <span class="tab-day" data-i18n="program.days.day1">День 1</span>
+                    </button>
+                    <button class="tab-btn" data-tab="day2">
+                        <span class="tab-day" data-i18n="program.days.day2">День 2</span>
+                    </button>
+                    <button class="tab-btn" data-tab="day3">
+                        <span class="tab-day" data-i18n="program.days.day3">День 3</span>
+                    </button>
+                    <button class="tab-btn" data-tab="day4">
+                        <span class="tab-day" data-i18n="program.days.day4">День 4</span>
+                    </button>
+                </div>
+
+                <div class="tabs-content">
+                    <div class="tab-panel active" id="day1">
+                        <div class="day-content">
+                            <div class="day-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 18a5 5 0 0 0-10 0" />
+                                    <line x1="12" y1="2" x2="12" y2="9" />
+                                    <line x1="4.22" y1="10.22" x2="5.64" y2="11.64" />
+                                    <line x1="1" y1="18" x2="3" y2="18" />
+                                    <line x1="21" y1="18" x2="23" y2="18" />
+                                    <line x1="18.36" y1="11.64" x2="19.78" y2="10.22" />
+                                    <line x1="23" y1="22" x2="1" y2="22" />
+                                    <polyline points="8 6 12 2 16 6" />
+                                </svg>
+                            </div>
+                            <div class="day-details reveal">
+                                <h3 data-i18n="program.day1.title">Неділя, 9 лютого: знайомство</h3>
+                                <ul class="timeline">
+                                    <li><span class="time">17:00</span><span class="event"
+                                            data-i18n="program.day1.event1">Приїзд та заселення</span></li>
+                                    <li><span class="time">18:00</span><span class="event"
+                                            data-i18n="program.day1.event2">Спільна вечеря</span></li>
+                                    <li><span class="time">19:30</span><span class="event"
+                                            data-i18n="program.day1.event3">Зібрання</span></li>
+                                    <li><span class="time">21:00</span><span class="event"
+                                            data-i18n="program.day1.event4">Спілкування та ігри</span></li>
+                                </ul>
+                                <p class="day-note" data-i18n="program.day1.note">Розслабтеся та проведіть чудово час.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="day2">
+                        <div class="day-content">
+                            <div class="day-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                    <path
+                                        d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="day-details reveal">
+                                <h3 data-i18n="program.day2.title">Понеділок, 10 лютого: лижі та тренінг</h3>
+                                <ul class="timeline">
+                                    <li><span class="time">08:00</span><span class="event"
+                                            data-i18n="program.day2.event1">Сніданок</span></li>
+                                    <li><span class="time">09:00</span><span class="event"
+                                            data-i18n="program.day2.event2">Зібрання</span></li>
+                                    <li><span class="time">11:00</span><span class="event"
+                                            data-i18n="program.day2.event3">Тренінг: фінансова грамотність</span></li>
+                                    <li><span class="time">13:00</span><span class="event"
+                                            data-i18n="program.day2.event4">Обід</span></li>
+                                    <li><span class="time">14:00</span><span class="event"
+                                            data-i18n="program.day2.event5">Катання на лижах ⛷️</span></li>
+                                    <li><span class="time">19:00</span><span class="event"
+                                            data-i18n="program.day2.event6">Вечеря та шашлик</span></li>
+                                    <li><span class="time">21:00</span><span class="event"
+                                            data-i18n="program.day2.event7">Баня</span></li>
+                                </ul>
+                                <p class="day-note" data-i18n="program.day2.note">Адреналін на схилах і практичні
+                                    знання.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="day3">
+                        <div class="day-content">
+                            <div class="day-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                            </div>
+                            <div class="day-details reveal">
+                                <h3 data-i18n="program.day3.title">Вівторок, 11 лютого: активності</h3>
+                                <ul class="timeline">
+                                    <li><span class="time">08:30</span><span class="event"
+                                            data-i18n="program.day3.event1">Сніданок</span></li>
+                                    <li><span class="time">10:00</span><span class="event"
+                                            data-i18n="program.day3.event2">Зібрання</span></li>
+                                    <li><span class="time">13:00</span><span class="event"
+                                            data-i18n="program.day3.event3">Обід</span></li>
+                                    <li><span class="time">15:00</span><span class="event"
+                                            data-i18n="program.day3.event4">Тренінг: приготування проповіді</span></li>
+                                    <li><span class="time">17:00</span><span class="event"
+                                            data-i18n="program.day3.event5">Волейбол 🏐 / Більярд 🎱 та боулінг
+                                            🎳</span></li>
+                                    <li><span class="time">19:00</span><span class="event"
+                                            data-i18n="program.day3.event6">Вечеря</span></li>
+                                    <li><span class="time">20:30</span><span class="event"
+                                            data-i18n="program.day3.event7">Ігри та вікторини</span></li>
+                                </ul>
+                                <p class="day-note" data-i18n="program.day3.note">Спорт, навчання та веселощі.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="day4">
+                        <div class="day-content">
+                            <div class="day-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                    <path d="M12 2v2" />
+                                </svg>
+                            </div>
+                            <div class="day-details reveal">
+                                <h3 data-i18n="program.day4.title">Середа, 12 лютого: завершення</h3>
+                                <ul class="timeline">
+                                    <li><span class="time">08:30</span><span class="event"
+                                            data-i18n="program.day4.event1">Сніданок</span></li>
+                                    <li><span class="time">10:00</span><span class="event"
+                                            data-i18n="program.day4.event2">Ранкове Зібрання</span></li>
+                                    <li><span class="time">12:00</span><span class="event"
+                                            data-i18n="program.day4.event3">Час для збирання речей</span></li>
+                                    <li><span class="time">12:30</span><span class="event"
+                                            data-i18n="program.day4.event4">Обід та прощання</span></li>
+                                    <li><span class="time">13:00</span><span class="event"
+                                            data-i18n="program.day4.event5">Від'їзд</span></li>
+                                </ul>
+                                <p class="day-note" data-i18n="program.day4.note">Їдете наповненими та натхненними.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaker Section -->
+    <section class="section speaker" id="speaker">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="speaker.title">Гість</h2>
+                <p data-i18n="speaker.subtitle">З нами буде досвідчений служитель.</p>
+            </div>
+            <div class="speaker-card reveal">
+                <div class="speaker-photo">
+                    <img src="media/спікер.jpg" alt="Віталій Єременко">
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-info">
+                        <h3 data-i18n="speaker.name">Віталій Єременко</h3>
+                        <p class="speaker-title" data-i18n="speaker.role">Пастор та проповідник</p>
+                        <p class="speaker-bio" data-i18n="speaker.bio">Віталій має багаторічний досвід у служінні. Він
+                            проводитиме тренінги по фінансовій грамотності з християнської перспективи та навчить
+                            практичним навичкам приготування біблійних проповідей.</p>
+                        <div class="speaker-topics">
+                            <h4 data-i18n="speaker.topicsTitle">Теми тренінгів:</h4>
+                            <ul>
+                                <li>
+                                    <span class="topic-icon">💰</span>
+                                    <div>
+                                        <strong data-i18n="speaker.topic1.title">Фінансова грамотність</strong>
+                                        <p data-i18n="speaker.topic1.desc">Біблійні принципи управління фінансами</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="topic-icon">📖</span>
+                                    <div>
+                                        <strong data-i18n="speaker.topic2.title">Приготування проповіді</strong>
+                                        <p data-i18n="speaker.topic2.desc">Як ефективно донести Боже Слово</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="gallery.title">Як це виглядає</h2>
+                <p data-i18n="gallery.subtitle">Фото та відео що вас очікує.</p>
+            </div>
+            <!-- ... gallery grid ... -->
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.24.jpeg" alt="Табір в горах" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.27.jpeg" alt="Група учасників" loading="lazy">
+                </div>
+                <div class="gallery-item gallery-item-video">
+                    <video class="gallery-video" preload="auto" playsinline>
+                        <source src="media/IMG_9276.MOV" type="video/quicktime">
+                        <source src="media/IMG_9276.MOV" type="video/mp4">
+                    </video>
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.33.jpeg" alt="Активності" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.35.jpeg" alt="Спілкування" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.36.jpeg" alt="Разом" loading="lazy">
+                </div>
+                <div class="gallery-item gallery-item-video">
+                    <video class="gallery-video" preload="auto" playsinline>
+                        <source src="media/IMG_9287.MOV" type="video/quicktime">
+                        <source src="media/IMG_9287.MOV" type="video/mp4">
+                    </video>
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-video">
+                    <video class="gallery-video" preload="auto" playsinline>
+                        <source src="media/IMG_9277.MOV" type="video/quicktime">
+                        <source src="media/IMG_9277.MOV" type="video/mp4">
+                    </video>
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.42.jpeg" alt="Весело разом" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/photo_2025-12-19 23.21.43.jpeg" alt="Спогади табору" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Hidden extra videos -->
+            <div class="gallery-extra" id="galleryExtra">
+                <div class="gallery-grid">
+                    <!-- ... hidden videos ... -->
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9279_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9279.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9281_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9281.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9284_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9284.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/2025-12-21 22.42.48.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9286.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9292_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9292.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9298_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9298.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9301_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9301.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9306_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9306.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-video">
+                        <video class="gallery-video" poster="media/IMG_9311_poster.jpg" preload="auto" playsinline>
+                            <source src="media/IMG_9311.MOV" type="video/quicktime">
+                        </video>
+                        <div class="video-play-overlay">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Show more button -->
+            <button class="btn-show-more" id="showMoreVideos">
+                <span class="show-more-text" data-i18n="gallery.showMore">Більше відео</span>
+                <span class="show-less-text" data-i18n="gallery.showLess" style="display: none;">Менше відео</span>
+                <svg class="show-more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Video Lightbox -->
+    <div class="video-lightbox" id="videoLightbox">
+        <button class="lightbox-close" id="videoLightboxClose">&times;</button>
+        <video class="lightbox-video" id="lightboxVideo" controls playsinline>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Lightbox for images -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+    </div>
+
+    <!-- What's Included Section -->
+    <section class="section included" id="included">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="included.title">Що входить</h2>
+            </div>
+
+            <div class="slider-container reveal">
+                <!-- Navigation buttons -->
+                <button class="slider-nav slider-prev" id="includedPrev" aria-label="Попередній">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="slider-wrapper">
+                    <div class="included-grid slider-track" id="includedSlider">
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <polyline points="9 22 9 12 15 12 15 22" />
+                                </svg>
+                            </div>
+                            <span data-i18n="included.stay">Проживання 3 ночі</span>
+                        </div>
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                                    <line x1="6" y1="1" x2="6" y2="4" />
+                                    <line x1="10" y1="1" x2="10" y2="4" />
+                                    <line x1="14" y1="1" x2="14" y2="4" />
+                                </svg>
+                            </div>
+                            <span data-i18n="included.food">Повне харчування</span>
+                        </div>
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                    <path
+                                        d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span data-i18n="included.ski">Лижні підйомники</span>
+                        </div>
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                </svg>
+                            </div>
+                            <span data-i18n="included.trainings">Всі тренінги</span>
+                        </div>
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                            </div>
+                            <span data-i18n="included.sports">Спортивні активності</span>
+                        </div>
+                        <div class="included-item">
+                            <div class="included-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                </svg>
+                            </div>
+                            <span data-i18n="included.entertainment">Баня та розваги</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-nav slider-next" id="includedNext" aria-label="Наступний">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Slider dots -->
+            <div class="slider-dots" id="includedDots"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 data-i18n="faq.title">Часті запитання</h2>
+                <p data-i18n="faq.subtitle">Те, що важливо знати перед рішенням.</p>
+            </div>
+
+            <div class="accordion reveal">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q1.question">Хто може поїхати на табір?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q1.answer">Табір відкритий для християнських сімей. Якщо ви хочете
+                            активно провести час, навчитися новому та поспілкуватися з Богом — ви запрошені!</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q2.question">Чи можна приїхати з дітьми?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q2.answer" data-i18n-html="true"><strong>Так.</strong> Додаткову інформацію
+                            можна запитати відправивши своє запитання
+                            разом із заявкою.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q3.question">Якою мовою все проходить?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q3.answer" data-i18n-html="true">Основна мова — <strong>українська</strong>.
+                            Якщо ви не розумієте — напишіть нам, знайдемо
+                            рішення.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q4.question">Що брати з собою?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q4.answer">Біблію, Теплий одяг, Гарний настрій! Детальний список
+                            надішлемо після реєстрації.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q5.question">Скільки коштує участь?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q5.answer" data-i18n-html="true">Орієнтовно <strong>€400–450 на сімʼю</strong>
+                            (проживання, харчування, програма,
+                            підйомники). Якщо фінанси — бар'єр, напишіть нам.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span data-i18n="faq.q6.question">Чи обов'язково бути віруючим?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="faq.q6.answer">Табір — християнський. Якщо ви відкриті до віри — ласкаво просимо,
+                            навіть якщо ви на шляху
+                            пошуку. Ми поважаємо кожного.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section class="section register" id="register">
+        <div class="container">
+            <div class="register-card reveal">
+                <div class="register-content">
+                    <h2 data-i18n="register.title">Готові?</h2>
+                    <p data-i18n="register.subtitle">Місць обмаль — 15–20 пар. Заповніть форму, і ми зв'яжемося з вами.
+                    </p>
+
+                    <form class="registration-form" id="registrationForm">
+                        <!-- Інформація про пару -->
+                        <div class="form-section">
+
+                            <div class="form-group">
+                                <label for="familyName" data-i18n="register.form.family">Прізвище сім'ї *</label>
+                                <input type="text" id="familyName" name="familyName" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="husbandName" data-i18n="register.form.husband">Ім'я чоловіка</label>
+                                    <input type="text" id="husbandName" name="husbandName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="wifeName" data-i18n="register.form.wife">Ім'я дружини</label>
+                                    <input type="text" id="wifeName" name="wifeName">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-i18n="register.form.country">Країна телефону *</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="phoneCountry" value="ukraine" checked>
+                                        <span data-i18n="register.form.countryUA">🇺🇦 Україна</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="phoneCountry" value="germany">
+                                        <span data-i18n="register.form.countryDE">🇩🇪 Німеччина</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" data-i18n="register.form.phone">Телефон *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+380 XX XXX XX XX"
+                                    data-i18n-placeholder="register.form.phonePlaceholder">
+                                <small class="form-hint" data-i18n="register.form.phoneHint">Приклад: +380 50 123 45
+                                    67</small>
+                            </div>
+                        </div>
+
+                        <!-- Інформація про дітей -->
+                        <div class="form-section">
+                            <div class="form-section-header">
+                                <h3 class="form-section-title" data-i18n="register.form.children">Діти (якщо їдуть)</h3>
+                                <button type="button" class="btn-add-child" id="addChildBtn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span data-i18n="register.form.addChild">Додати дитину</span>
+                                </button>
+                            </div>
+
+                            <div id="childrenContainer"></div>
+                        </div>
+
+                        <!-- Коментар -->
+                        <div class="form-section">
+                            <div class="form-group">
+                                <label for="comments" data-i18n="register.form.comments">Коментарі або запитання</label>
+                                <textarea id="comments" name="comments" rows="4"
+                                    placeholder="Додаткова інформація, особливі потреби, запитання..."
+                                    data-i18n-placeholder="register.form.commentsPlaceholder"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span data-i18n="register.submit">Відправити заявку</span>
+                            <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </button>
+
+                        <p class="register-note" data-i18n="register.note">Реєстрація — вносить вас у список і за вами
+                            буде заброньовано місце.
+                        </p>
+                    </form>
+
+                    <!-- Success Message (hidden by default) -->
+                    <div class="form-success" id="formSuccess" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h3 data-i18n="register.success.title">Дякуємо за реєстрацію!</h3>
+                        <p data-i18n="register.success.message">Ми зв'яжемося з вами найближчим часом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p data-i18n="footer.copyright">Зимовий Табір 2026</p>
+                <p class="footer-contact"><span data-i18n="footer.contact">Питання?</span> <a
+                        href="mailto:artom.devv@gmail.com">artom.devv@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#register" class="btn btn-primary">
+            <span data-i18n="register.submit">Зареєструватися</span>
+            <svg class="icon icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+            </svg>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

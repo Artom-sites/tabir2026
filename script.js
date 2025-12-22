@@ -1,0 +1,1300 @@
+/* ==========================================
+   COUPLES RETREAT LANDING PAGE
+   Modern Dark Theme - Mobile First
+   Fonts: Playfair Display + DM Sans
+   ========================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    initTabs();
+    initAccordion();
+    initScrollReveal();
+    initSmoothScroll();
+    initStickyCta();
+    initParallax();
+    initGalleryVideos();
+    initLanguageToggle();
+    initLightbox();
+    initRegistrationForm();
+    initIncludedSlider();
+});
+
+/**
+ * PROGRAM TABS - Switch between days
+ */
+function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Remove active from all
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active to clicked
+            button.classList.add('active');
+            tabPanels[index].classList.add('active');
+        });
+    });
+}
+
+/**
+ * FAQ ACCORDION - Expand/collapse questions
+ */
+function initAccordion() {
+    const accordionButtons = document.querySelectorAll('.accordion-header');
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+/**
+ * SCROLL REVEAL - Premium one-time animations using IntersectionObserver
+ * Supports: .timeline li, .accordion-item, .gallery-item, .feature-card
+ */
+const REVEAL_SELECTORS = [
+    '.timeline li',
+    '.accordion-item',
+    '.gallery-item',
+    '.feature-card'
+];
+
+const STAGGER_DELAY = 180; // ms between items in same group
+
+function initScrollReveal(rootEl = document) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Setup elements with classes and stagger delays
+    REVEAL_SELECTORS.forEach(selector => {
+        // Group elements by parent to calculate stagger per group
+        const groups = new Map();
+
+        rootEl.querySelectorAll(selector).forEach(el => {
+            // Skip already initialized
+            if (el.classList.contains('scroll-reveal')) return;
+
+            const parent = el.parentElement;
+            if (!groups.has(parent)) {
+                groups.set(parent, []);
+            }
+            groups.get(parent).push(el);
+        });
+
+        // Apply classes and delays per group
+        groups.forEach((elements, parent) => {
+            elements.forEach((el, index) => {
+                el.classList.add('scroll-reveal');
+
+                // Alternate direction: even from left, odd from right
+                if (index % 2 === 0) {
+                    el.classList.add('from-left');
+                } else {
+                    el.classList.add('from-right');
+                }
+
+                // Stagger delay
+                el.style.setProperty('--reveal-delay', `${index * STAGGER_DELAY}ms`);
+
+                // If reduced motion, reveal instantly
+                if (prefersReducedMotion) {
+                    el.classList.add('in-view');
+                }
+            });
+        });
+    });
+
+    if (prefersReducedMotion) return;
+
+    // IntersectionObserver - trigger when 20% into viewport
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    rootEl.querySelectorAll('.scroll-reveal:not(.in-view)').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Also handle legacy .reveal sections
+    const sectionOptions = {
+        root: null,
+        rootMargin: '0px 0px -30% 0px',
+        threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, sectionOptions);
+
+    rootEl.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        sectionObserver.observe(el);
+    });
+}
+
+// Expose globally for dynamic content (e.g., "Show more" button)
+window.initScrollReveal = initScrollReveal;
+
+/**
+ * SMOOTH SCROLL - For anchor links
+ */
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+
+            if (target) {
+                const offset = 0;
+                const targetPosition = target.offsetTop - offset;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/**
+ * STICKY CTA - Show/hide sticky register button
+ */
+function initStickyCta() {
+    const stickyCta = document.querySelector('.sticky-cta');
+    if (!stickyCta) return;
+
+    const registerSection = document.querySelector('#register');
+    if (!registerSection) return;
+
+    const checkPosition = () => {
+        const registerTop = registerSection.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (registerTop > windowHeight) {
+            stickyCta.classList.add('visible');
+        } else {
+            stickyCta.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', checkPosition, { passive: true });
+    checkPosition();
+}
+
+/**
+ * PARALLAX EFFECT - Simple parallax for hero
+ */
+function initParallax() {
+    const heroBg = document.querySelector('.hero-bg');
+    if (!heroBg) return;
+
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const parallaxSpeed = 0.5;
+
+                if (scrolled < window.innerHeight) {
+                    heroBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                    heroBg.style.opacity = 1 - (scrolled / window.innerHeight) * 0.6;
+                }
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
+
+/**
+ * GALLERY VIDEOS - Open in fullscreen lightbox
+ */
+function initGalleryVideos() {
+    const videoItems = document.querySelectorAll('.gallery-item-video');
+    const videoLightbox = document.getElementById('videoLightbox');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+    const videoLightboxClose = document.getElementById('videoLightboxClose');
+
+    if (!videoLightbox || !lightboxVideo || !videoLightboxClose) return;
+
+    // Force load all videos including hidden ones
+    const loadVideoThumbnails = () => {
+        const allVideos = document.querySelectorAll('.gallery-video');
+        allVideos.forEach(video => {
+            // Set currentTime to show first frame when video loads
+            video.addEventListener('loadedmetadata', () => {
+                video.currentTime = 0.5;
+            });
+
+            // Force load the video
+            video.load();
+        });
+    };
+
+    // Load immediately and also after a delay for hidden videos
+    loadVideoThumbnails();
+    setTimeout(loadVideoThumbnails, 1000);
+    setTimeout(loadVideoThumbnails, 3000);
+
+    // Click on video item to open in lightbox
+    videoItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const video = item.querySelector('video');
+            if (!video) return;
+
+            const source = video.querySelector('source');
+            if (source) {
+                lightboxVideo.src = source.src;
+                videoLightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                lightboxVideo.play();
+            }
+        });
+    });
+
+    // Close video lightbox
+    const closeVideoLightbox = () => {
+        videoLightbox.classList.remove('active');
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+        document.body.style.overflow = '';
+    };
+
+    videoLightboxClose.addEventListener('click', closeVideoLightbox);
+    videoLightbox.addEventListener('click', (e) => {
+        if (e.target === videoLightbox) {
+            closeVideoLightbox();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoLightbox.classList.contains('active')) {
+            closeVideoLightbox();
+        }
+    });
+
+    // Show more videos button
+    const showMoreBtn = document.getElementById('showMoreVideos');
+    const galleryExtra = document.getElementById('galleryExtra');
+
+    if (showMoreBtn && galleryExtra) {
+        showMoreBtn.addEventListener('click', () => {
+            const isExpanding = !galleryExtra.classList.contains('visible');
+
+            showMoreBtn.classList.toggle('expanded');
+            galleryExtra.classList.toggle('visible');
+
+            if (isExpanding) {
+                // Scroll to show new content when expanding
+                setTimeout(() => {
+                    galleryExtra.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 200);
+            } else {
+                // Scroll back to button when collapsing
+                setTimeout(() => {
+                    showMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 200);
+            }
+        });
+    }
+}
+
+
+// ==========================================
+// LANGUAGE TOGGLE - UA/RU
+// ==========================================
+
+// Повні переклади для всіх елементів сторінки
+const translations = {
+    ua: {
+        nav: {
+            langLabel: 'Змінити мову'
+        },
+        hero: {
+            location: 'Шварцвальд, Німеччина',
+            title: 'Зимовий табір<br><em>для молодих сімей</em>',
+            subtitle: 'Християнський табір для молодих пар — лижі, спорт, тренінги та духовне зростання разом.',
+            dates: '9–12 лютого',
+            couples: '15–20 сімей'
+        },
+        about: {
+            title: 'Що це таке?',
+            lead: 'Чотири дні в горах — щоб провести час разом як сім\'я, навчитися новому і зміцнити стосунки в оточенні інших молодих пар.',
+            text1: 'Це не просто відпочинок. Не тільки навчання. Не лише спорт.',
+            text2: 'Це <strong>час для вашої сімʼї</strong> — для активного відпочинку, практичних тренінгів з фінансів та служіння, і глибокого спілкування з Богом та одне з одним.'
+        },
+        features: {
+            ski: {
+                title: 'Лижі ⛷️',
+                desc: 'Катання на підйомниках та схилах'
+            },
+            training: {
+                title: 'Тренінги',
+                desc: 'Фінанси та проповіді'
+            },
+            activities: {
+                title: 'Активності',
+                desc: 'Баня, більярд, боулінг, волейбол'
+            },
+            spiritual: {
+                title: 'Духовна частина',
+                desc: 'Молитва, навчання і спілкування'
+            }
+        },
+        program: {
+            title: 'Програма табору',
+            subtitle: 'Чотири насичені дні — активності, навчання та спілкування з Богом.',
+            days: {
+                day1: 'День 1',
+                day2: 'День 2',
+                day3: 'День 3',
+                day4: 'День 4'
+            },
+            day1: {
+                title: 'Неділя, 9 лютого: знайомство',
+                event1: 'Приїзд та заселення',
+                event2: 'Спільна вечеря',
+                event3: 'Зібрання',
+                event4: 'Спілкування та ігри',
+                note: 'Розслабтеся та проведіть чудово час.'
+            },
+            day2: {
+                title: 'Понеділок, 10 лютого: лижі та тренінг',
+                event1: 'Сніданок',
+                event2: 'Зібрання',
+                event3: 'Тренінг: фінансова грамотність',
+                event4: 'Обід',
+                event5: 'Катання на лижах ⛷️',
+                event6: 'Вечеря та шашлик',
+                event7: 'Баня',
+                note: 'Адреналін на схилах і практичні знання.'
+            },
+            day3: {
+                title: 'Вівторок, 11 лютого: активності',
+                event1: 'Сніданок',
+                event2: 'Зібрання',
+                event3: 'Обід',
+                event4: 'Тренінг: приготування проповіді',
+                event5: 'Волейбол 🏐 / Більярд 🎱 та боулінг 🎳',
+                event6: 'Вечеря',
+                event7: 'Ігри та вікторини',
+                note: 'Спорт, навчання та веселощі.'
+            },
+            day4: {
+                title: 'Середа, 12 лютого: завершення',
+                event1: 'Сніданок',
+                event2: 'Ранкове Зібрання',
+                event3: 'Час для збирання речей',
+                event4: 'Обід та прощання',
+                event5: 'Від\'їзд',
+                note: 'Їдете наповненими та натхненними.'
+            }
+        },
+        speaker: {
+            title: 'Гість',
+            subtitle: 'З нами буде досвідчений служитель.',
+            name: 'Віталій Єременко',
+            role: 'Пастор та проповідник',
+            bio: 'Віталій має багаторічний досвід у служінні. Він проводитиме тренінги по фінансовій грамотності з християнської перспективи та навчить практичним навичкам приготування біблійних проповідей.',
+            topicsTitle: 'Теми тренінгів:',
+            topic1: {
+                title: 'Фінансова грамотність',
+                desc: 'Біблійні принципи управління фінансами'
+            },
+            topic2: {
+                title: 'Приготування проповіді',
+                desc: 'Як ефективно донести Боже Слово'
+            }
+        },
+        gallery: {
+            title: 'Як це виглядає',
+            subtitle: 'Фото та відео що вас очікує.',
+            showMore: 'Більше відео',
+            showLess: 'Менше відео'
+        },
+        included: {
+            title: 'Що входить',
+            stay: 'Проживання 3 ночі',
+            food: 'Повне харчування',
+            ski: 'Лижні підйомники',
+            trainings: 'Всі тренінги',
+            sports: 'Спортивні активності',
+            entertainment: 'Баня та розваги'
+        },
+        faq: {
+            title: 'Часті запитання',
+            subtitle: 'Те, що важливо знати перед рішенням.',
+            q1: {
+                question: 'Хто може поїхати на табір?',
+                answer: 'Табір відкритий для християнських сімей. Якщо ви хочете активно провести час, навчитися новому та поспілкуватися з Богом — ви запрошені!'
+            },
+            q2: {
+                question: 'Чи можна приїхати з дітьми?',
+                answer: '<strong>Так.</strong> Додаткову інформацію можна запитати відправивши своє запитання разом із заявкою.'
+            },
+            q3: {
+                question: 'Якою мовою все проходить?',
+                answer: 'Основна мова — <strong>українська</strong>. Якщо ви не розумієте — напишіть нам, знайдемо рішення.'
+            },
+            q4: {
+                question: 'Що брати з собою?',
+                answer: 'Біблію, Теплий одяг, Гарний настрій! Детальний список надішлемо після реєстрації.'
+            },
+            q5: {
+                question: 'Скільки коштує участь?',
+                answer: 'Орієнтовно <strong>€400–450 на сімʼю</strong> (проживання, харчування, програма, підйомники). Якщо фінанси — бар\'єр, напишіть нам.'
+            },
+            q6: {
+                question: 'Чи обов\'язково бути віруючим?',
+                answer: 'Табір — християнський. Якщо ви відкриті до віри — ласкаво просимо, навіть якщо ви на шляху пошуку. Ми поважаємо кожного.'
+            }
+        },
+        register: {
+            title: 'Готові?',
+            subtitle: 'Місць обмаль — 15–20 пар. Заповніть форму, і ми зв\'яжемося з вами.',
+            form: {
+                family: 'Прізвище сім\'ї *',
+                husband: 'Ім\'я чоловіка',
+                wife: 'Ім\'я дружини',
+                country: 'Країна телефону *',
+                countryUA: '🇺🇦 Україна',
+                countryDE: '🇩🇪 Німеччина',
+                phone: 'Телефон *',
+                phonePlaceholder: '+380 XX XXX XX XX',
+                phoneHint: 'Приклад: +380 50 123 45 67',
+                children: 'Діти (якщо їдуть)',
+                addChild: 'Додати дитину',
+                childName: 'Ім\'я дитини',
+                childAge: 'Вік',
+                comments: 'Коментарі або запитання',
+                commentsPlaceholder: 'Додаткова інформація, особливі потреби, запитання...'
+            },
+            submit: 'Відправити заявку',
+            note: 'Реєстрація — вносить вас у список і за вами буде заброньовано місце.',
+            success: {
+                title: 'Дякуємо за реєстрацію!',
+                message: 'Ми зв\'яжемося з вами найближчим часом.'
+            }
+        },
+        footer: {
+            copyright: '© 2026 Зимовий Табір для молодих сімей',
+            location: 'Шварцвальд, Німеччина'
+        }
+    },
+    ru: {
+        nav: {
+            langLabel: 'Изменить язык'
+        },
+        hero: {
+            location: 'Шварцвальд, Германия',
+            title: 'Зимний лагерь<br><em>для молодых семей</em>',
+            subtitle: 'Христианский лагерь для молодых пар — лыжи, спорт, тренинги и духовный рост вместе.',
+            dates: '9–12 февраля',
+            couples: '15–20 семей'
+        },
+        about: {
+            title: 'Что это такое?',
+            lead: 'Четыре дня в горах — чтобы провести время вместе как семья, научиться новому и укрепить отношения в окружении других молодых пар.',
+            text1: 'Это не просто отдых. Не только обучение. Не только спорт.',
+            text2: 'Это <strong>время для вашей семьи</strong> — для активного отдыха, практических тренингов по финансам и служению, и глубокого общения с Богом и друг с другом.'
+        },
+        features: {
+            ski: {
+                title: 'Лыжи ⛷️',
+                desc: 'Катание на подъёмниках и склонах'
+            },
+            training: {
+                title: 'Тренинги',
+                desc: 'Финансы и проповеди'
+            },
+            activities: {
+                title: 'Активности',
+                desc: 'Баня, бильярд, боулинг, волейбол'
+            },
+            spiritual: {
+                title: 'Духовная часть',
+                desc: 'Молитва, обучение и общение'
+            }
+        },
+        program: {
+            title: 'Программа лагеря',
+            subtitle: 'Четыре насыщенных дня — активности, обучение и общение с Богом.',
+            days: {
+                day1: 'День 1',
+                day2: 'День 2',
+                day3: 'День 3',
+                day4: 'День 4'
+            },
+            day1: {
+                title: 'Воскресенье, 9 февраля: знакомство',
+                event1: 'Приезд и заселение',
+                event2: 'Совместный ужин',
+                event3: 'Собрание',
+                event4: 'Общение и игры',
+                note: 'Расслабьтесь и проведите отличное время.'
+            },
+            day2: {
+                title: 'Понедельник, 10 февраля: лыжи и тренинг',
+                event1: 'Завтрак',
+                event2: 'Собрание',
+                event3: 'Тренинг: финансовая грамотность',
+                event4: 'Обед',
+                event5: 'Катание на лыжах ⛷️',
+                event6: 'Ужин и шашлык',
+                event7: 'Баня',
+                note: 'Адреналин на склонах и практические знания.'
+            },
+            day3: {
+                title: 'Вторник, 11 февраля: активности',
+                event1: 'Завтрак',
+                event2: 'Собрание',
+                event3: 'Обед',
+                event4: 'Тренинг: подготовка проповеди',
+                event5: 'Волейбол 🏐 / Бильярд 🎱 и боулинг 🎳',
+                event6: 'Ужин',
+                event7: 'Игры и викторины',
+                note: 'Спорт, обучение и веселье.'
+            },
+            day4: {
+                title: 'Среда, 12 февраля: завершение',
+                event1: 'Завтрак',
+                event2: 'Утреннее собрание',
+                event3: 'Время для сбора вещей',
+                event4: 'Обед и прощание',
+                event5: 'Отъезд',
+                note: 'Уезжаете наполненными и вдохновлёнными.'
+            }
+        },
+        speaker: {
+            title: 'Гость',
+            subtitle: 'С нами будет опытный служитель.',
+            name: 'Виталий Еременко',
+            role: 'Пастор и проповедник',
+            bio: 'Виталий имеет многолетний опыт в служении. Он будет проводить тренинги по финансовой грамотности с христианской перспективы и научит практическим навыкам подготовки библейских проповедей.',
+            topicsTitle: 'Темы тренингов:',
+            topic1: {
+                title: 'Финансовая грамотность',
+                desc: 'Библейские принципы управления финансами'
+            },
+            topic2: {
+                title: 'Подготовка проповеди',
+                desc: 'Как эффективно донести Божье Слово'
+            }
+        },
+        gallery: {
+            title: 'Как это выглядит',
+            subtitle: 'Фото и видео, что вас ждёт.',
+            showMore: 'Больше видео',
+            showLess: 'Меньше видео'
+        },
+        included: {
+            title: 'Что включено',
+            stay: 'Проживание 3 ночи',
+            food: 'Полное питание',
+            ski: 'Лыжные подъёмники',
+            trainings: 'Все тренинги',
+            sports: 'Спортивные активности',
+            entertainment: 'Баня и развлечения'
+        },
+        faq: {
+            title: 'Частые вопросы',
+            subtitle: 'То, что важно знать перед решением.',
+            q1: {
+                question: 'Кто может поехать в лагерь?',
+                answer: 'Лагерь открыт для христианских семей. Если вы хотите активно провести время, научиться новому и пообщаться с Богом — вы приглашены!'
+            },
+            q2: {
+                question: 'Можно ли приехать с детьми?',
+                answer: '<strong>Да.</strong> Дополнительную информацию можно запросить, отправив свой вопрос вместе с заявкой.'
+            },
+            q3: {
+                question: 'На каком языке всё проходит?',
+                answer: 'Основной язык — <strong>украинский</strong>. Если вы не понимаете — напишите нам, найдём решение.'
+            },
+            q4: {
+                question: 'Что брать с собой?',
+                answer: 'Библию, тёплую одежду, хорошее настроение! Подробный список пришлём после регистрации.'
+            },
+            q5: {
+                question: 'Сколько стоит участие?',
+                answer: 'Ориентировочно <strong>€400–450 на семью</strong> (проживание, питание, программа, подъёмники). Если финансы — барьер, напишите нам.'
+            },
+            q6: {
+                question: 'Обязательно быть верующим?',
+                answer: 'Лагерь — христианский. Если вы открыты к вере — добро пожаловать, даже если вы на пути поиска. Мы уважаем каждого.'
+            }
+        },
+        register: {
+            title: 'Готовы?',
+            subtitle: 'Мест мало — 15–20 пар. Заполните форму, и мы свяжемся с вами.',
+            form: {
+                family: 'Фамилия семьи *',
+                husband: 'Имя мужа',
+                wife: 'Имя жены',
+                country: 'Страна телефона *',
+                countryUA: '🇺🇦 Украина',
+                countryDE: '🇩🇪 Германия',
+                phone: 'Телефон *',
+                phonePlaceholder: '+380 XX XXX XX XX',
+                phoneHint: 'Пример: +380 50 123 45 67',
+                children: 'Дети (если едут)',
+                addChild: 'Добавить ребёнка',
+                childName: 'Имя ребёнка',
+                childAge: 'Возраст',
+                comments: 'Комментарии или вопросы',
+                commentsPlaceholder: 'Дополнительная информация, особые потребности, вопросы...'
+            },
+            submit: 'Отправить заявку',
+            note: 'Регистрация — вносит вас в список и за вами будет забронировано место.',
+            success: {
+                title: 'Спасибо за регистрацию!',
+                message: 'Мы свяжемся с вами в ближайшее время.'
+            }
+        },
+        footer: {
+            copyright: '© 2026 Зимний лагерь для молодых семей',
+            location: 'Шварцвальд, Германия'
+        }
+    }
+};
+
+// Список доступних мов для перемикання
+const languages = ['ua', 'ru'];
+
+function initLanguageToggle() {
+    const toggle = document.getElementById('languageToggle');
+    if (!toggle) return;
+
+    // Визначити поточну мову (default українська)
+    let currentLang = localStorage.getItem('language') || 'ua';
+
+    // Переконатися, що мова є в списку
+    if (!languages.includes(currentLang)) {
+        currentLang = 'ua';
+    }
+
+    // Встановити початковий текст
+    updateLanguage(currentLang);
+
+    // Обробник кліку - перемикання між мовами
+    toggle.addEventListener('click', () => {
+        const currentIndex = languages.indexOf(currentLang);
+        const nextIndex = (currentIndex + 1) % languages.length;
+        currentLang = languages[nextIndex];
+        localStorage.setItem('language', currentLang);
+        updateLanguage(currentLang);
+    });
+}
+
+function updateLanguage(lang) {
+    const toggle = document.getElementById('languageToggle');
+    const langText = toggle.querySelector('.lang-text');
+
+    // Оновити текст на кнопці (показуємо код мови)
+    langText.textContent = lang.toUpperCase();
+    toggle.setAttribute('aria-label', translations[lang].nav.langLabel);
+
+    // Оновити мову в HTML
+    document.documentElement.lang = lang === 'ua' ? 'uk' : lang;
+
+    const t = translations[lang];
+
+    // Оновити всі елементи з data-i18n атрибутом
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const value = getNestedValue(t, key);
+
+        if (value) {
+            // Якщо елемент має data-i18n-html="true", використати innerHTML
+            if (el.hasAttribute('data-i18n-html')) {
+                el.innerHTML = value;
+            } else {
+                el.textContent = value;
+            }
+        }
+    });
+
+    // Оновити placeholder'и
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        const value = getNestedValue(t, key);
+        if (value) {
+            el.placeholder = value;
+        }
+    });
+
+    // Оновити aria-label
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        const value = getNestedValue(t, key);
+        if (value) {
+            el.setAttribute('aria-label', value);
+        }
+    });
+}
+
+// Допоміжна функція для отримання вкладених значень (наприклад, "hero.location")
+function getNestedValue(obj, path) {
+    return path.split('.').reduce((current, key) => current && current[key], obj);
+}
+
+
+/**
+ * LIGHTBOX - Open images AND videos in fullscreen with navigation
+ */
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    if (!lightbox || !lightboxImage || !lightboxClose) return;
+
+    // Collect all gallery items (images and videos)
+    const allGalleryItems = [];
+
+    // Get images
+    document.querySelectorAll('.gallery-item:not(.gallery-item-video) img').forEach(img => {
+        allGalleryItems.push({ type: 'image', src: img.src, alt: img.alt, element: img });
+    });
+
+    // Get videos
+    document.querySelectorAll('.gallery-item-video').forEach(videoItem => {
+        const video = videoItem.querySelector('video');
+        const source = video?.querySelector('source');
+        const poster = video?.getAttribute('poster') || '';
+        if (source) {
+            allGalleryItems.push({
+                type: 'video',
+                src: source.src,
+                poster: poster,
+                element: videoItem
+            });
+        }
+    });
+
+    let currentIndex = 0;
+
+    // Create or get lightbox video element
+    let lightboxVideo = lightbox.querySelector('.lightbox-video');
+    if (!lightboxVideo) {
+        lightboxVideo = document.createElement('video');
+        lightboxVideo.className = 'lightbox-video lightbox-image';
+        lightboxVideo.controls = true;
+        lightboxVideo.playsInline = true;
+        lightboxVideo.style.display = 'none';
+        lightboxImage.parentNode.insertBefore(lightboxVideo, lightboxImage.nextSibling);
+    }
+
+    // Create navigation arrows if they don't exist
+    let prevBtn = lightbox.querySelector('.lightbox-prev');
+    let nextBtn = lightbox.querySelector('.lightbox-next');
+    let counter = lightbox.querySelector('.lightbox-counter');
+
+    if (!prevBtn) {
+        prevBtn = document.createElement('button');
+        prevBtn.className = 'lightbox-prev';
+        prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+        prevBtn.setAttribute('aria-label', 'Попереднє');
+        lightbox.appendChild(prevBtn);
+    }
+
+    if (!nextBtn) {
+        nextBtn = document.createElement('button');
+        nextBtn.className = 'lightbox-next';
+        nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+        nextBtn.setAttribute('aria-label', 'Наступне');
+        lightbox.appendChild(nextBtn);
+    }
+
+    if (!counter) {
+        counter = document.createElement('div');
+        counter.className = 'lightbox-counter';
+        lightbox.appendChild(counter);
+    }
+
+    // Show item at index
+    const showItem = (index) => {
+        if (index < 0) index = allGalleryItems.length - 1;
+        if (index >= allGalleryItems.length) index = 0;
+
+        currentIndex = index;
+        const item = allGalleryItems[currentIndex];
+
+        // Stop any playing video
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+
+        if (item.type === 'image') {
+            lightboxImage.src = item.src;
+            lightboxImage.alt = item.alt || '';
+            lightboxImage.style.display = 'block';
+            lightboxVideo.style.display = 'none';
+        } else if (item.type === 'video') {
+            lightboxVideo.src = item.src;
+            lightboxVideo.poster = item.poster;
+            lightboxImage.style.display = 'none';
+            lightboxVideo.style.display = 'block';
+        }
+
+        counter.textContent = `${currentIndex + 1} / ${allGalleryItems.length}`;
+    };
+
+    // Open lightbox from gallery items
+    allGalleryItems.forEach((item, index) => {
+        item.element.addEventListener('click', (e) => {
+            // Don't double-handle video items (they have their own handler)
+            if (item.type === 'video') return;
+
+            currentIndex = index;
+            showItem(currentIndex);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Override video item clicks to use unified lightbox
+    document.querySelectorAll('.gallery-item-video').forEach((videoItem, vIndex) => {
+        videoItem.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Find this video in our items array
+            const itemIndex = allGalleryItems.findIndex(item => item.element === videoItem);
+            if (itemIndex !== -1) {
+                currentIndex = itemIndex;
+                showItem(currentIndex);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Navigation
+    const goNext = () => showItem(currentIndex + 1);
+    const goPrev = () => showItem(currentIndex - 1);
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goNext();
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goPrev();
+    });
+
+    // Close lightbox
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+            goNext();
+        } else if (e.key === 'ArrowLeft') {
+            goPrev();
+        }
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                goNext(); // Swipe left -> next
+            } else {
+                goPrev(); // Swipe right -> prev
+            }
+        }
+    }, { passive: true });
+}
+
+/**
+ * REGISTRATION FORM - Handle dynamic children fields and form submission
+ */
+function initRegistrationForm() {
+    const form = document.getElementById('registrationForm');
+    const addChildBtn = document.getElementById('addChildBtn');
+    const childrenContainer = document.getElementById('childrenContainer');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (!form || !addChildBtn || !childrenContainer) return;
+
+    // Handle phone country change
+    const phoneInput = document.getElementById('phone');
+    const phoneHint = document.querySelector('.form-hint');
+    const countryRadios = document.querySelectorAll('input[name="phoneCountry"]');
+
+    countryRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if (e.target.value === 'ukraine') {
+                phoneInput.placeholder = '+380 XX XXX XX XX';
+                phoneHint.textContent = 'Приклад: +380 50 123 45 67';
+            } else {
+                phoneInput.placeholder = '+49 XXX XXXXXXX';
+                phoneHint.textContent = 'Приклад: +49 176 12345678';
+            }
+        });
+    });
+
+    // Add child entry
+    addChildBtn.addEventListener('click', () => {
+        const childEntry = createChildEntry();
+        childrenContainer.insertAdjacentHTML('beforeend', childEntry);
+        renumberChildren();
+
+        // Add remove event listener to the new button
+        const allEntries = childrenContainer.querySelectorAll('.child-entry');
+        const lastEntry = allEntries[allEntries.length - 1];
+        const removeBtn = lastEntry.querySelector('.btn-remove-child');
+        if (removeBtn) {
+            removeBtn.addEventListener('click', () => {
+                lastEntry.remove();
+                renumberChildren();
+            });
+        }
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Collect form data
+        const formData = new FormData(form);
+
+        // Collect children data
+        const childNames = formData.getAll('childFirstName[]');
+        const childAges = formData.getAll('childAge[]');
+        const children = childNames.map((name, index) => ({
+            firstName: name,
+            age: childAges[index]
+        }));
+
+        const data = {
+            familyName: formData.get('familyName'),
+            husbandName: formData.get('husbandName'),
+            wifeName: formData.get('wifeName'),
+            phoneCountry: formData.get('phoneCountry'),
+            phone: formData.get('phone'),
+            children: children,
+            comments: formData.get('comments')
+        };
+
+        // Send to Telegram
+        sendToTelegram(data);
+    });
+
+    async function sendToTelegram(data) {
+        // TODO: Замініть на ваші дані
+        const TELEGRAM_BOT_TOKEN = '8566564117:AAF1h19DyvrqPXt2bylV7FZzjI4vkFuIdQo';
+        const TELEGRAM_CHAT_ID = '-1003368695156';
+
+        // Get submit button
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const btnText = submitBtn.childNodes[0];
+        const originalText = btnText.textContent.trim();
+
+        // Show loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+        btnText.textContent = 'Відправляємо...';
+
+        // Format message
+        const message = formatTelegramMessage(data);
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            if (response.ok) {
+                console.log('✅ Заявка відправлена в Telegram');
+                // Show success message
+                form.style.display = 'none';
+                formSuccess.style.display = 'block';
+            } else {
+                console.error('❌ Помилка відправки в Telegram:', await response.text());
+                alert('Помилка відправки заявки. Спробуйте пізніше.');
+                // Reset button
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
+            }
+        } catch (error) {
+            console.error('❌ Помилка:', error);
+            alert('Помилка відправки заявки. Перевірте підключення до інтернету.');
+            // Reset button
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+            btnText.textContent = originalText;
+        }
+    }
+
+    function formatTelegramMessage(data) {
+        let message = '🎿 <b>Нова заявка на табір!</b>\n';
+        message += '━━━━━━━━━━━━━━━━━━━━\n';
+
+        // Прізвище сім'ї
+        message += `👨‍👩‍👧‍👦 <b>Сім'я:</b> ${data.familyName}\n`;
+
+        // Чоловік
+        if (data.husbandName) {
+            message += `👨 <b>Чоловік:</b> ${data.husbandName}\n`;
+        }
+
+        // Дружина
+        if (data.wifeName) {
+            message += `👩 <b>Дружина:</b> ${data.wifeName}\n`;
+        }
+
+        // Діти
+        if (data.children.length > 0) {
+            message += `👶 <b>Діти:</b>\n`;
+            data.children.forEach((child, index) => {
+                message += `   ${index + 1}. ${child.firstName} - ${child.age} років\n`;
+            });
+        } else {
+            message += '👶 <b>Діти:</b> Без дітей\n';
+        }
+
+        // Телефон з країною
+        const countryFlag = data.phoneCountry === 'ukraine' ? '🇺🇦' : '🇩🇪';
+        const countryName = data.phoneCountry === 'ukraine' ? 'Україна' : 'Німеччина';
+        message += `📱 <b>Телефон:</b> ${data.phone} ${countryFlag} ${countryName}\n`;
+
+        // Коментарі
+        if (data.comments) {
+            message += `━━━━━━━━━━━━━━━━━━━━\n`;
+            message += `💬 <b>Коментарі:</b>\n${data.comments}`;
+        }
+
+        return message;
+    }
+
+    function createChildEntry() {
+        return `
+            <div class="child-entry">
+                <div class="child-entry-header">
+                    <h4 class="child-entry-title">Дитина</h4>
+                    <button type="button" class="btn-remove-child" aria-label="Видалити дитину">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ім'я *</label>
+                        <input type="text" name="childFirstName[]" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Вік (років) *</label>
+                        <input type="number" name="childAge[]" min="0" max="18" required>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renumberChildren() {
+        const childEntries = childrenContainer.querySelectorAll('.child-entry');
+        childEntries.forEach((entry, index) => {
+            const title = entry.querySelector('.child-entry-title');
+            if (title) {
+                title.textContent = `Дитина ${index + 1}`;
+            }
+        });
+    }
+}
+
+/**
+ * Initialize Included Slider (Infinite Loop)
+ */
+function initIncludedSlider() {
+    const slider = document.getElementById('includedSlider');
+    const prevBtn = document.getElementById('includedPrev');
+    const nextBtn = document.getElementById('includedNext');
+    const dotsContainer = document.getElementById('includedDots');
+
+    if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const items = slider.querySelectorAll('.included-item');
+    let itemsPerView = getItemsPerView();
+    const totalItems = items.length;
+    const totalSlides = Math.ceil(totalItems / itemsPerView);
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('slider-dot');
+            dot.setAttribute('aria-label', `Слайд ${i + 1}`);
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function getItemsPerView() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 640) return 2;
+        return 1;
+    }
+
+    function updateSlider() {
+        // З padding-right та box-sizing просто рухаємо по 100% на слайд
+        const offsetPercentage = -(currentIndex * 100);
+        slider.style.transform = `translateX(${offsetPercentage}%)`;
+
+        // Update dots
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        if (isTransitioning) return;
+
+        // Циклічне перемикання
+        if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+
+        updateSlider();
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchStartX - touchEndX > swipeThreshold) {
+            nextSlide();
+        } else if (touchEndX - touchStartX > swipeThreshold) {
+            prevSlide();
+        }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newItemsPerView = getItemsPerView();
+            if (newItemsPerView !== itemsPerView) {
+                itemsPerView = newItemsPerView;
+                currentIndex = 0;
+                createDots();
+                updateSlider();
+            }
+        }, 250);
+    });
+
+    // Initialize
+    createDots();
+    updateSlider();
+}
