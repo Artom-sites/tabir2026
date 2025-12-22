@@ -2845,23 +2845,33 @@ a {
 }
 
 .footer-contact {
-    margin-top: var(--space-xs);
+    margin-top: var(--space-sm);
+}
+
+.footer-contact a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--color-primary-light);
+    text-decoration: underline;
 }
 
 .footer-credit {
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
     font-size: 0.85rem;
-    opacity: 0.6;
 }
 
 .footer-credit a {
-    color: var(--color-primary-light);
+    color: var(--color-accent);
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .footer-credit a:hover {
-    opacity: 0.8;
+    color: var(--color-primary-light);
     text-decoration: underline;
 }
 
