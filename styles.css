@@ -816,6 +816,8 @@ a {
     overflow: hidden;
     padding: var(--space-xl) var(--space-md);
     padding-top: calc(var(--space-xl) + env(safe-area-inset-top));
+    padding-bottom: 140px;
+    /* Підняти контент вище від scroll-hint */
     background: linear-gradient(180deg,
             rgba(10, 11, 15, 0.3) 0%,
             rgba(10, 11, 15, 0.6) 50%,
