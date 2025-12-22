@@ -2550,9 +2550,10 @@ a {
 }
 
 .country-selector.open .country-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    display: block !important;
 }
 
 .country-option {
