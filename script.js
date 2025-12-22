@@ -1165,10 +1165,10 @@ function initRegistrationForm() {
             message += '👶 <b>Діти:</b> Без дітей\n';
         }
 
-        // Телефон з країною
-        const countryFlag = data.phoneCountry === 'ukraine' ? '🇺🇦' : '🇩🇪';
-        const countryName = data.phoneCountry === 'ukraine' ? 'Україна' : 'Німеччина';
-        message += `📱 <b>Телефон:</b> ${data.phone} ${countryFlag} ${countryName}\n`;
+        // Телефон з кодом країни
+        const countryCode = data.phoneCountry === 'ukraine' ? '+380' : '+49';
+        const fullPhone = countryCode + data.phone;
+        message += `📱 <b>Телефон:</b> ${fullPhone}\n`;
 
         // Коментарі
         if (data.comments) {
