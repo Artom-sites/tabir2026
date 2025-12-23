@@ -1385,18 +1385,37 @@ a {
     padding: var(--space-section) 0;
 }
 
-/* Speaker Card - Asymmetric Premium Layout */
+/* Speakers Grid */
+.speakers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .speakers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Speaker Card - Compact for Grid */
 .speaker-card {
     position: relative;
-    max-width: 960px;
-    margin: 0 auto;
     background: rgba(255, 255, 255, 0.08);
     border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-xl);
-    padding: clamp(32px, 5vw, 56px);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(32px, 4vw, 48px);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px);
     box-shadow:
@@ -1404,6 +1423,15 @@ a {
         inset 1px 0 0 rgba(255, 255, 255, 0.05),
         0 32px 64px -12px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 1px 0 0 rgba(255, 255, 255, 0.05),
+        0 40px 80px -12px rgba(0, 0, 0, 0.6);
 }
 
 /* Subtle glow behind card */
@@ -1420,72 +1448,24 @@ a {
     filter: blur(20px);
 }
 
-@media (min-width: 768px) {
-    .speaker-card {
-        grid-template-columns: 240px 1fr;
-        align-items: start;
-    }
-}
-
-@media (min-width: 1024px) {
-    .speaker-card {
-        grid-template-columns: 280px 1fr;
-    }
-}
-
-/* Photo Container - Refined */
+/* Photo Container - Centered for Grid */
 .speaker-photo {
     position: relative;
     width: 100%;
-    max-width: 240px;
-    margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-    .speaker-photo {
-        max-width: none;
-        margin: 0;
-    }
+    display: flex;
+    justify-content: center;
 }
 
 /* Photo - Premium Frame */
 .speaker-photo img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border-radius: var(--radius-lg);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     display: block;
-}
-
-/* Badge - Refined Position */
-.speaker-badge {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: var(--gradient-primary);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: white;
-    white-space: nowrap;
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4),
-        0 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.02em;
-}
-
-.speaker-badge svg {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
 }
 
 /* Content Area - Better Spacing */
@@ -1493,13 +1473,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-top: 8px;
-}
-
-@media (min-width: 768px) {
-    .speaker-content {
-        padding-top: 0;
-    }
+    text-align: center;
 }
 
 /* Speaker Info Block */
@@ -1559,41 +1533,34 @@ a {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
 }
 
-/* Topic Item - Glass Chip Style */
+/* Topic Item - Compact Chip Style */
 .speaker-topics li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
     background: var(--glass-nav);
     border: 1px solid var(--glass-nav-border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
     transition: all var(--transition-base);
 }
 
 .speaker-topics li:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Topic Icon - Contained */
+/* Topic Icon */
 .topic-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
+    font-size: 1rem;
     line-height: 1;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--glass-card);
-    border: 1px solid var(--glass-card-border);
-    border-radius: var(--radius-sm);
 }
 
 /* Topic Text Container */
