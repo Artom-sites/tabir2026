@@ -2295,6 +2295,7 @@ a {
 /* Countdown Timer - Circular Style */
 .countdown-timer {
     margin-top: var(--space-lg);
+    margin-bottom: var(--space-xl);
     text-align: center;
 }
 
