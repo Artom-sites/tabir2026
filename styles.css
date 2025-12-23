@@ -196,7 +196,7 @@ body.alternative-design::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('media/fon.jpg') center center/cover no-repeat;
+    background: url('media/hero-bg-new.png') center center/cover no-repeat;
     pointer-events: none;
     z-index: -1;
 }
@@ -791,12 +791,17 @@ a {
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--space-lg);
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hero-eyebrow .icon {
@@ -863,10 +868,23 @@ a {
     align-items: center;
     gap: var(--space-xs);
     font-size: 0.9rem;
-    color: var(--color-text-muted);
-    padding: var(--space-xs) var(--space-sm);
-    background: var(--color-surface);
+    color: rgba(255, 255, 255, 0.9);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-base);
+}
+
+.meta-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
 }
 
 .meta-item .icon {
@@ -940,7 +958,6 @@ a {
    ========================================= */
 .section {
     padding: clamp(var(--space-xl), 10vw, var(--space-2xl)) 0;
-    overflow-x: hidden;
     width: 100%;
 }
 
@@ -1124,7 +1141,7 @@ a {
    PROGRAM SECTION (TABS) - Mobile Optimized
    ========================================== */
 .program {
-    background: linear-gradient(180deg, transparent 0%, var(--color-bg-secondary) 50%, transparent 100%);
+    /* Background removed - using full-page mountain image */
 }
 
 .tabs {
@@ -1310,19 +1327,24 @@ a {
 
 .day-note {
     display: inline-block;
-    padding: var(--space-xs) var(--space-sm);
-    background: var(--color-surface);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.85);
     font-style: italic;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================
    SPEAKER SECTION - Premium Redesign
    ========================================== */
 .speaker {
-    background: linear-gradient(180deg, transparent 0%, var(--color-bg-secondary) 50%, transparent 100%);
     padding: var(--space-section) 0;
 }
 
@@ -2083,13 +2105,6 @@ a {
 
 .slider-dot.active::before {
     border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* ==========================================
-   FAQ SECTION - Touch Optimized
-   ========================================== */
-.faq {
-    background: linear-gradient(180deg, transparent 0%, var(--color-bg-secondary) 50%, transparent 100%);
 }
 
 .accordion {
