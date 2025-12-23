@@ -163,22 +163,8 @@ body.alternative-design {
     overflow-x: hidden;
 }
 
-/* Fixed background using ::before for iOS compatibility */
-body.alternative-design::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background:
-        linear-gradient(180deg,
-            rgba(8, 9, 12, 0.4) 0%,
-            rgba(8, 9, 12, 0.6) 40%,
-            rgba(8, 9, 12, 0.85) 100%),
-        url('media/bg-mountains.jpg') center center/cover no-repeat;
-}
+
+/* Background image now in styles block below */
 
 body.alternative-design {
     /* CSS Variables for Premium Glass */
@@ -281,13 +267,11 @@ html body.alternative-design {
 @media (prefers-reduced-motion: reduce) {
     body.alternative-design {
         animation: none !important;
-        background-position: 0% 50%;
     }
 
     body.alternative-design::before,
     body.alternative-design::after {
         animation: none !important;
-        filter: blur(60px);
     }
 
     body.alternative-design .btn-primary::before,
