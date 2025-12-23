@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="preload" href="media/hero-bg-new.png" as="image">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=17">
 </head>
 
 <body class="alternative-design">
@@ -86,39 +86,23 @@
                 </div>
                 <div class="about-features reveal">
                     <div class="feature-card">
-                        <svg class="feature-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M14 3l-3 9h5l-3 9" stroke-linecap="round" stroke-linejoin="round" />
-                            <circle cx="5" cy="5" r="2" />
-                            <path d="M5 7v4l4 2m-4 0l-3 5m7-5l5 5" />
-                        </svg>
-                        <h3 data-i18n="features.ski.title">Лижі ⛷️</h3>
+                        <img src="media/icon-skiing.png" alt="Лижі" class="feature-icon-img">
+                        <h3 data-i18n="features.ski.title">Лижі</h3>
                         <p data-i18n="features.ski.desc">Катання на підйомниках та схилах</p>
                     </div>
                     <div class="feature-card">
-                        <svg class="feature-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
+                        <img src="media/icon-training.png" alt="Тренінги" class="feature-icon-img">
                         <h3 data-i18n="features.training.title">Тренінги</h3>
                         <p data-i18n="features.training.desc">Фінанси та проповіді</p>
                     </div>
                     <div class="feature-card">
-                        <svg class="feature-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M8 12a4 4 0 0 1 8 0M8 12a4 4 0 0 0 8 0" />
-                        </svg>
+                        <img src="media/Gemini_Generated_Image_te7hdbte7hdbte7h.png" alt="Активності"
+                            class="feature-icon-img">
                         <h3 data-i18n="features.activities.title">Активності</h3>
                         <p data-i18n="features.activities.desc">Баня, більярд, боулінг, волейбол</p>
                     </div>
                     <div class="feature-card">
-                        <svg class="feature-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
+                        <img src="media/icon-spiritual.png" alt="Духовна частина" class="feature-icon-img">
                         <h3 data-i18n="features.spiritual.title">Духовна частина</h3>
                         <p data-i18n="features.spiritual.desc">Молитва, навчання і спілкування</p>
                     </div>
@@ -301,17 +285,12 @@
                             <h3 data-i18n="speaker.speaker1.name">Віталій Єременко</h3>
                             <p class="speaker-title" data-i18n="speaker.speaker1.role">Пастор та проповідник</p>
                             <p class="speaker-bio" data-i18n="speaker.speaker1.bio">Віталій має багаторічний досвід у
-                                служінні. Він проводитиме тренінги по фінансовій грамотності з християнської
-                                перспективи.</p>
+                                служінні та буде надавати духовну підтримку учасникам табору.</p>
                             <div class="speaker-topics">
                                 <ul>
                                     <li>
-                                        <span class="topic-icon">💰</span>
-                                        <span data-i18n="speaker.speaker1.topic1">Фінансова грамотність</span>
-                                    </li>
-                                    <li>
-                                        <span class="topic-icon">📖</span>
-                                        <span data-i18n="speaker.speaker1.topic2">Приготування проповіді</span>
+                                        <span class="topic-icon">🙏</span>
+                                        <span data-i18n="speaker.speaker1.topic1">Духовна підтримка</span>
                                     </li>
                                 </ul>
                             </div>
@@ -329,12 +308,12 @@
                             <h3 data-i18n="speaker.speaker2.name">Давид Акопян</h3>
                             <p class="speaker-title" data-i18n="speaker.speaker2.role">Служитель та наставник</p>
                             <p class="speaker-bio" data-i18n="speaker.speaker2.bio">Давид має серце для молодих сімей та
-                                допомагає парам будувати міцні стосунки на біблійному фундаменті.</p>
+                                проводитиме тренінг з приготування проповіді та бесіду для братів.</p>
                             <div class="speaker-topics">
                                 <ul>
                                     <li>
-                                        <span class="topic-icon">💑</span>
-                                        <span data-i18n="speaker.speaker2.topic">Сімейні стосунки</span>
+                                        <span class="topic-icon">📖</span>
+                                        <span data-i18n="speaker.speaker2.topic1">Як приготувати проповідь</span>
                                     </li>
                                 </ul>
                             </div>
@@ -351,15 +330,52 @@
                         <div class="speaker-info">
                             <h3 data-i18n="speaker.speaker3.name">В'ячеслав Марфіч</h3>
                             <p class="speaker-title" data-i18n="speaker.speaker3.role">Пастор та вчитель</p>
-                            <p class="speaker-bio" data-i18n="speaker.speaker3.bio">В'ячеслав навчатиме практичним
-                                навичкам приготування біблійних проповідей та ефективному служінню словом.</p>
+                            <p class="speaker-bio" data-i18n="speaker.speaker3.bio">В'ячеслав проведе бесіду на тему
+                                взаємодії віруючого з церквою.</p>
                             <div class="speaker-topics">
                                 <ul>
                                     <li>
-                                        <span class="topic-icon">📖</span>
-                                        <span data-i18n="speaker.speaker3.topic">Приготування проповіді</span>
+                                        <span class="topic-icon">⛪</span>
+                                        <span data-i18n="speaker.speaker3.topic">Я і церква</span>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Додаткові тренінги - Міні картки -->
+                <div class="mini-trainers reveal">
+                    <h4 data-i18n="speaker.additional.title">Додаткові тренінги</h4>
+                    <div class="mini-trainers-grid">
+                        <div class="mini-trainer-card">
+                            <img src="media/placeholder-speaker.jpg" alt="Руслан Акопян" class="mini-photo">
+                            <div class="mini-info">
+                                <span class="mini-topic">💰 Фінанси</span>
+                                <div class="mini-meta">
+                                    <span class="mini-name">Руслан Акопян</span>
+                                    <span class="mini-tag">👨 братам</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mini-trainer-card">
+                            <img src="media/placeholder-speaker.jpg" alt="Алла Акопян" class="mini-photo">
+                            <div class="mini-info">
+                                <span class="mini-topic">👩‍👧 Роль жінки в сім'ї</span>
+                                <div class="mini-meta">
+                                    <span class="mini-name">Алла Акопян</span>
+                                    <span class="mini-tag">👩 сестрам</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mini-trainer-card">
+                            <img src="media/placeholder-speaker.jpg" alt="Егіне Акопян" class="mini-photo">
+                            <div class="mini-info">
+                                <span class="mini-topic">💑 Жінка-помічниця</span>
+                                <div class="mini-meta">
+                                    <span class="mini-name">Егіне Акопян</span>
+                                    <span class="mini-tag">👩 сестрам</span>
+                                </div>
                             </div>
                         </div>
                     </div>
