@@ -2412,9 +2412,7 @@ a {
 
 /* Form countdown - smaller */
 .countdown-timer-form {
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin: var(--space-lg) 0;
 }
 
 .countdown-timer-form .countdown-boxes {
