@@ -2348,6 +2348,39 @@ a {
     animation: rotateRing 8s linear infinite;
 }
 
+/* Different animations for each circle */
+.countdown-box:nth-child(1)::after {
+    animation: rotateRing 12s linear infinite;
+    background: conic-gradient(from 45deg,
+            rgba(100, 180, 255, 0.6) 0%,
+            rgba(100, 180, 255, 0.3) 20%,
+            transparent 40%);
+}
+
+.countdown-box:nth-child(2)::after {
+    animation: rotateRingReverse 10s linear infinite;
+    background: conic-gradient(from 180deg,
+            rgba(180, 100, 255, 0.6) 0%,
+            rgba(180, 100, 255, 0.3) 15%,
+            transparent 35%);
+}
+
+.countdown-box:nth-child(3)::after {
+    animation: rotateRing 7s linear infinite;
+    background: conic-gradient(from 270deg,
+            rgba(100, 255, 180, 0.5) 0%,
+            rgba(100, 255, 180, 0.2) 25%,
+            transparent 45%);
+}
+
+.countdown-box:nth-child(4)::after {
+    animation: rotateRingReverse 5s linear infinite;
+    background: conic-gradient(from 0deg,
+            rgba(255, 150, 100, 0.6) 0%,
+            rgba(255, 150, 100, 0.3) 30%,
+            transparent 50%);
+}
+
 @keyframes rotateRing {
     from {
         transform: rotate(0deg);
@@ -2355,6 +2388,16 @@ a {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateRingReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
     }
 }
 
