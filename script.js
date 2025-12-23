@@ -4,6 +4,45 @@
    Fonts: Playfair Display + DM Sans
    ========================================== */
 
+/**
+ * LIQUID GLASS PRELOADER
+ * Wait 300ms to ensure glass effects render correctly
+ * Better to show nothing than broken visual states
+ */
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    const body = document.body;
+
+    // Minimum delay to ensure blur/glass effects are ready
+    const MIN_DELAY = 300;
+    const startTime = Date.now();
+
+    function hidePreloader() {
+        const elapsed = Date.now() - startTime;
+        const remainingDelay = Math.max(0, MIN_DELAY - elapsed);
+
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            body.classList.remove('loading');
+
+            // Remove preloader from DOM after animation
+            setTimeout(() => {
+                preloader.remove();
+            }, 300);
+        }, remainingDelay);
+    }
+
+    // Hide when page fully loaded OR after timeout
+    if (document.readyState === 'complete') {
+        hidePreloader();
+    } else {
+        window.addEventListener('load', hidePreloader);
+    }
+}
+
+// Initialize preloader immediately
+initPreloader();
+
 document.addEventListener('DOMContentLoaded', () => {
     initTabs();
     initAccordion();

@@ -4,6 +4,68 @@
    Fonts: Playfair Display + DM Sans
    ========================================== */
 
+/* ==========================================
+   LIQUID GLASS PRELOADER
+   Prevents broken visual states
+   Glass must appear complete
+   ========================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg, #08090C);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+    pointer-events: all;
+}
+
+.preloader-glass {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: preloader-pulse 1s ease-in-out infinite;
+}
+
+@keyframes preloader-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Hide preloader when ready */
+.preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Prevent content flash during load */
+body.loading>*:not(.preloader) {
+    opacity: 0;
+}
+
+body:not(.loading)>* {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
 /* CSS Variables - Liquid Glass Premium */
 :root {
     /* ===== LIQUID GLASS PREMIUM ===== */
