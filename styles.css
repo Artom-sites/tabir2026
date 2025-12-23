@@ -1389,7 +1389,7 @@ a {
 .speakers-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1555,6 +1555,10 @@ a {
 .speaker-topics li:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
+}
+
+.speaker-topics li span:not(.topic-icon) {
+    text-align: center;
 }
 
 /* Topic Icon */
