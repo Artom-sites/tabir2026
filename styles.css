@@ -30,8 +30,8 @@
     height: 60px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     animation: preloader-pulse 1s ease-in-out infinite;
 }
@@ -66,36 +66,47 @@ body:not(.loading)>* {
     transition: opacity 0.3s ease-out;
 }
 
-/* CSS Variables - Liquid Glass Premium */
+/* CSS Variables - iOS-Style Liquid Glass Premium */
 :root {
-    /* ===== LIQUID GLASS PREMIUM ===== */
+    /* ===== iOS LIQUID GLASS ===== */
+    /* Built with LIGHT, not blur */
 
     /* Background - Deep black */
     --color-bg: #08090C;
     --color-bg-secondary: #0D0E12;
 
     /* ===== 3-LEVEL GLASS HIERARCHY ===== */
-    /* Nav/chips: найпрозоріше */
+    /* Tinted semi-transparent surfaces */
     --glass-nav: rgba(255, 255, 255, 0.04);
-    --glass-nav-border: rgba(255, 255, 255, 0.08);
-
-    /* Cards/sections: середнє */
     --glass-card: rgba(255, 255, 255, 0.06);
-    --glass-card-border: rgba(255, 255, 255, 0.12);
-
-    /* Modal/form: найщільніше */
     --glass-modal: rgba(255, 255, 255, 0.10);
-    --glass-modal-border: rgba(255, 255, 255, 0.16);
 
-    /* ===== OPTICAL GLASS EFFECTS ===== */
-    /* Light direction: top-left */
-    --glass-highlight: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
-    --glass-edge-top: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    --glass-edge-left: inset 1px 0 0 rgba(255, 255, 255, 0.04);
-    --blur: 24px;
+    /* ===== iOS GLASS OPTICAL EFFECTS ===== */
+    /* 1. Thin bright hairline edge (top + left) */
+    --glass-hairline:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 1px 0 0 rgba(255, 255, 255, 0.08);
+
+    /* 2. Soft inner highlight at top */
+    --glass-inner-glow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.06);
+
+    /* 3. Deep wide shadow underneath */
+    --glass-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+
+    /* 4. Subtle noise texture (applied via pseudo-element) */
     --noise-opacity: 0.03;
 
+    /* 5. Minimal blur - only for fixed/hero elements */
+    --blur-hero: 12px;
+    --blur-none: 0px;
+
     /* Legacy compatibility */
+    --glass-nav-border: rgba(255, 255, 255, 0.10);
+    --glass-card-border: rgba(255, 255, 255, 0.12);
+    --glass-modal-border: rgba(255, 255, 255, 0.16);
     --color-surface: var(--glass-card);
     --color-surface-hover: rgba(255, 255, 255, 0.10);
     --border: var(--glass-card-border);
@@ -365,8 +376,8 @@ body.alternative-design .speaker-card,
 body.alternative-design .included-item,
 body.alternative-design .gallery-item {
     background: var(--card);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 32px var(--shadow),
@@ -425,8 +436,8 @@ body.alternative-design .feature-card:hover {
 /* Glass Icons */
 body.alternative-design .feature-icon {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 16px rgba(100, 181, 246, 0.12),
         0 1px 0 rgba(255, 255, 255, 0.08) inset;
@@ -437,8 +448,8 @@ body.alternative-design .btn-primary {
     background: linear-gradient(180deg,
             rgba(100, 181, 246, 0.25) 0%,
             rgba(100, 181, 246, 0.18) 100%);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(100, 181, 246, 0.3);
     color: var(--accentText);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -490,8 +501,8 @@ body.alternative-design .btn-primary:focus-visible {
 body.alternative-design .nav,
 body.alternative-design .tabs-nav {
     background: var(--nav);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid var(--border);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
 }
@@ -504,7 +515,7 @@ body.alternative-design .tab-btn {
 
 body.alternative-design .tab-btn.active {
     background: rgba(100, 181, 246, 0.15);
-    backdrop-filter: blur(16px);
+    backdrop-filter: none;
     box-shadow: 0 0 12px var(--glow),
         0 1px 0 rgba(255, 255, 255, 0.08) inset,
         0 0 0 1px rgba(100, 181, 246, 0.2) inset;
@@ -513,8 +524,8 @@ body.alternative-design .tab-btn.active {
 /* Accordion Glass Capsules */
 body.alternative-design .accordion-item {
     background: var(--card);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid var(--border);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
     transition: all 0.3s ease;
@@ -530,8 +541,8 @@ body.alternative-design .accordion-item.active {
 /* Glass Theme Toggle */
 body.alternative-design .theme-toggle {
     background: var(--card);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid var(--border);
     box-shadow: 0 4px 16px var(--shadow),
         0 1px 0 rgba(255, 255, 255, 0.06) inset;
@@ -582,8 +593,8 @@ body.alternative-design .sun-icon {
     height: 52px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
     display: flex;
@@ -864,13 +875,14 @@ a {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--space-lg);
     padding: 10px 20px;
-    /* Fake glass - no backdrop-filter for scroll performance */
-    background: rgba(30, 35, 45, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 4px 16px rgba(0, 0, 0, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hero-eyebrow .icon {
@@ -939,13 +951,17 @@ a {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.9);
     padding: var(--space-sm) var(--space-md);
-    /* Fake glass - no backdrop-filter for scroll performance */
-    background: rgba(30, 35, 45, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    /* iOS Glass: tinted surface */
+    background: rgba(255, 255, 255, 0.08);
+    /* iOS Glass: thin hairline border */
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
+    /* iOS Glass: hairline + inner glow + deep shadow */
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 4px 16px rgba(0, 0, 0, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2);
     transition: all var(--transition-base);
 }
 
@@ -984,7 +1000,7 @@ a {
     border-radius: 14px;
     position: relative;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
+    backdrop-filter: none;
 }
 
 .scroll-arrow::before {
@@ -1087,8 +1103,8 @@ a {
     border-radius: var(--radius-lg);
     text-align: center;
     transition: all var(--transition-base);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     overflow: hidden;
     cursor: pointer;
     box-shadow:
@@ -1227,8 +1243,8 @@ a {
     background: var(--glass-nav);
     border: 1px solid var(--glass-nav-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .tab-btn {
@@ -1344,8 +1360,8 @@ a {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, rgba(100, 181, 246, 0.2) 0%, rgba(126, 87, 194, 0.2) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     padding: 14px;
@@ -1397,16 +1413,17 @@ a {
 
 .day-note {
     padding: var(--space-sm) var(--space-sm);
-    /* Fake glass - no backdrop-filter for scroll performance */
-    background: rgba(30, 35, 45, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.85);
     font-style: italic;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 4px 12px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================
@@ -1447,8 +1464,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.1),
         inset 1px 0 0 rgba(255, 255, 255, 0.05),
@@ -1649,8 +1666,8 @@ a {
     gap: var(--space-sm);
     padding: var(--space-sm);
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
@@ -1805,7 +1822,7 @@ a {
     width: 48px;
     height: 48px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     color: white;
@@ -1832,8 +1849,8 @@ a {
     width: 56px;
     height: 56px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     color: white;
@@ -1872,8 +1889,8 @@ a {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     padding: 8px 20px;
     border-radius: 20px;
     color: white;
@@ -1915,8 +1932,8 @@ a {
     height: 64px;
     color: white;
     background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-radius: 50%;
     padding: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -1978,8 +1995,8 @@ a {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .btn-show-more:hover {
@@ -2123,8 +2140,8 @@ a {
 /* Premium Card Styling - High Contrast Glass */
 .included-item {
     background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1.5px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
@@ -2184,8 +2201,8 @@ a {
     align-items: center;
     justify-content: center;
     transition: all var(--transition-base);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .slider-nav svg {
@@ -2390,8 +2407,8 @@ a {
 
 .register-card .btn-primary {
     background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     color: var(--color-text);
     border: none;
     box-shadow: none;
@@ -2412,8 +2429,8 @@ a {
     margin: 28px auto 32px;
     padding: 16px 28px;
     background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     box-shadow:
@@ -2590,8 +2607,8 @@ a {
     font-size: 0.95rem;
     color: var(--color-text);
     transition: all var(--transition-base);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -2639,8 +2656,8 @@ a {
     display: flex;
     align-items: stretch;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-sm);
     transition: all var(--transition-base);
@@ -2701,8 +2718,8 @@ a {
     left: 0;
     right: 0;
     background: rgba(20, 25, 30, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-sm);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -2850,8 +2867,8 @@ a {
     gap: var(--space-xs);
     padding: var(--space-sm) var(--space-md);
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
