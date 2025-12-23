@@ -62,7 +62,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="styles.css?v=25">
+    <link rel="stylesheet" href="styles.css?v=26">
 </head>
 
 <body class="alternative-design loading">
@@ -71,6 +71,12 @@
     <div class="preloader" id="preloader">
         <div class="preloader-glass"></div>
     </div>
+
+    <!-- Blocking script to ensure preloader shows first -->
+    <script>
+        // Force paint before continuing
+        document.body.offsetHeight;
+    </script>
 
     <!-- Language Toggle -->
     <button class="theme-toggle" id="languageToggle" aria-label="Змінити мову" data-i18n-aria="nav.langLabel">
