@@ -2755,7 +2755,6 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 100%;
     padding: 14px 28px;
     background: linear-gradient(135deg, #0088cc, #00a8e6);
     color: white;
@@ -2765,6 +2764,12 @@ a {
     font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+}
+
+@media (max-width: 767px) {
+    .telegram-group-btn {
+        width: 100%;
+    }
 }
 
 .telegram-group-btn:hover {
