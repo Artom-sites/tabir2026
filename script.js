@@ -1105,8 +1105,8 @@ function initRegistrationForm() {
 
         // Get submit button
         const submitBtn = form.querySelector('button[type="submit"]');
-        const btnText = submitBtn.childNodes[0];
-        const originalText = btnText.textContent.trim();
+        const btnText = submitBtn.querySelector('span');
+        const originalText = btnText.textContent;
 
         // Show loading state
         submitBtn.classList.add('loading');
