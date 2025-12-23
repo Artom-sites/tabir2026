@@ -135,12 +135,6 @@ html {
 
 body {
     font-family: var(--font-body);
-    background:
-        linear-gradient(180deg,
-            rgba(10, 11, 15, 0.6) 0%,
-            rgba(10, 11, 15, 0.75) 50%,
-            rgba(10, 11, 15, 0.9) 100%),
-        url('media/hero-bg.png') center top/cover no-repeat fixed;
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
