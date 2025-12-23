@@ -517,7 +517,7 @@ const translations = {
             success: {
                 title: 'Дякуємо за реєстрацію!',
                 message: 'Ми зв\'яжемося з вами найближчим часом.',
-                joinGroup: 'Приєднатися до групи'
+                joinGroup: 'Приєднатися'
             }
         },
         footer: {
@@ -700,7 +700,7 @@ const translations = {
             success: {
                 title: 'Спасибо за регистрацию!',
                 message: 'Мы свяжемся с вами в ближайшее время.',
-                joinGroup: 'Присоединиться к группе'
+                joinGroup: 'Присоединиться'
             }
         },
         footer: {
