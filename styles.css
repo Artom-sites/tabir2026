@@ -2749,6 +2749,30 @@ a {
     margin-bottom: var(--space-lg);
 }
 
+/* Registration Closed Message */
+.registration-closed {
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.registration-closed svg {
+    width: 64px;
+    height: 64px;
+    stroke: rgba(255, 180, 100, 0.9);
+    margin-bottom: var(--space-md);
+}
+
+.registration-closed h3 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-body);
+}
+
+.registration-closed p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /* Telegram Group Button */
 .telegram-group-btn {
     display: inline-flex;

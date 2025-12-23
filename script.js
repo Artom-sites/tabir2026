@@ -518,6 +518,10 @@ const translations = {
                 title: 'Дякуємо за реєстрацію!',
                 message: 'Ми зв\'яжемося з вами найближчим часом.',
                 joinGroup: 'Приєднатися'
+            },
+            closed: {
+                title: 'Реєстрацію закрито',
+                message: 'Реєстрація на табір завершилась 20 січня 2026.'
             }
         },
         footer: {
@@ -701,6 +705,10 @@ const translations = {
                 title: 'Спасибо за регистрацию!',
                 message: 'Мы свяжемся с вами в ближайшее время.',
                 joinGroup: 'Присоединиться'
+            },
+            closed: {
+                title: 'Регистрация закрыта',
+                message: 'Регистрация на лагерь завершилась 20 января 2026.'
             }
         },
         footer: {
@@ -993,6 +1001,30 @@ function initRegistrationForm() {
     const formSuccess = document.getElementById('formSuccess');
 
     if (!form || !addChildBtn || !childrenContainer) return;
+
+    // Check registration deadline
+    const REGISTRATION_DEADLINE = new Date('2026-01-20T23:59:59');
+    const now = new Date();
+
+    if (now > REGISTRATION_DEADLINE) {
+        // Registration is closed - show message
+        form.innerHTML = `
+            <div class="registration-closed">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <h3 data-i18n="register.closed.title">Реєстрацію закрито</h3>
+                <p data-i18n="register.closed.message">Реєстрація на табір завершилась 20 січня 2026.</p>
+            </div>
+        `;
+        // Apply translations to the new content
+        if (typeof applyPageTranslations === 'function') {
+            applyPageTranslations();
+        }
+        return;
+    }
 
     // Country Selector Dropdown
     const countrySelector = document.getElementById('countrySelector');
