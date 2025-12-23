@@ -1389,7 +1389,7 @@ a {
 .speakers-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -2746,6 +2746,38 @@ a {
 
 .form-success p {
     color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-lg);
+}
+
+/* Telegram Group Button */
+.telegram-group-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #0088cc, #00a8e6);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+}
+
+.telegram-group-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 136, 204, 0.5);
+    background: linear-gradient(135deg, #0099dd, #00b8f5);
+}
+
+.telegram-group-btn svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke: none;
+    margin-bottom: 0;
 }
 
 /* Submit Button Override */
