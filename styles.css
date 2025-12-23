@@ -1165,22 +1165,13 @@ a {
     color: white;
 }
 
-/* 3D Glass icons - no container, just icon */
-.feature-icon-img {
-    width: auto;
-    height: auto;
-    background: none;
-    padding: 0;
-    border-radius: 0;
+/* Simple SVG icons - no container */
+.feature-svg {
+    width: 48px;
+    height: 48px;
     margin: 0 auto var(--space-md);
-}
-
-.feature-icon-img img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    mix-blend-mode: lighten;
-    filter: brightness(1.2);
+    color: rgba(255, 255, 255, 0.7);
+    stroke-width: 1.5;
 }
 
 .feature-card h3 {
