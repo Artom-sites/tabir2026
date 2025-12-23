@@ -1542,14 +1542,15 @@ a {
 .speaker-topics li {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
+    gap: 8px;
+    padding: 10px 16px;
     background: var(--glass-nav);
     border: 1px solid var(--glass-nav-border);
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
     transition: all var(--transition-base);
+    line-height: 1;
 }
 
 .speaker-topics li:hover {
@@ -1557,14 +1558,12 @@ a {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-.speaker-topics li span:not(.topic-icon) {
-    text-align: center;
-}
-
 /* Topic Icon */
 .topic-icon {
     font-size: 1rem;
     line-height: 1;
+    display: flex;
+    align-items: center;
 }
 
 /* Topic Text Container */
