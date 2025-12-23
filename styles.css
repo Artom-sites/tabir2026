@@ -2340,35 +2340,44 @@ a {
     inset: -1px;
     border-radius: 50%;
     background: conic-gradient(from 0deg,
-            rgba(255, 200, 100, 0.6) 0%,
-            rgba(255, 200, 100, 0.3) 25%,
-            transparent 50%);
+            rgba(255, 200, 100, 0.7) 0%,
+            rgba(255, 200, 100, 0.4) 20%,
+            transparent 40%);
     mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 2px));
     -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), white calc(100% - 2px));
     animation: rotateRing 8s linear infinite;
+    filter: drop-shadow(0 0 6px rgba(255, 200, 100, 0.4));
 }
 
-/* Different animation speeds - logical order */
+/* Hover effect - speed up and glow */
+.countdown-box:hover::after {
+    animation-duration: 0.5s !important;
+    filter: drop-shadow(0 0 12px rgba(255, 200, 100, 0.8));
+}
+
+.countdown-box:hover {
+    transform: scale(1.05);
+}
+
+/* Different animations for each circle */
 .countdown-box:nth-child(1)::after {
-    animation-duration: 60s;
+    animation: rotateRing 60s linear infinite;
 }
 
-/* Days - slowest */
 .countdown-box:nth-child(2)::after {
-    animation-duration: 24s;
+    animation: rotateRing 24s linear infinite reverse;
+    animation-delay: -5s;
 }
 
-/* Hours */
 .countdown-box:nth-child(3)::after {
-    animation-duration: 6s;
+    animation: rotateRing 6s linear infinite;
+    animation-delay: -2s;
 }
 
-/* Minutes */
 .countdown-box:nth-child(4)::after {
-    animation-duration: 1s;
+    animation: rotateRing 1s linear infinite reverse;
 }
 
-/* Seconds - fastest */
 
 @keyframes rotateRing {
     from {
