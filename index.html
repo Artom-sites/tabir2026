@@ -62,6 +62,29 @@
                     <span data-i18n="hero.couples">15–20 сімей</span>
                 </span>
             </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-timer" id="heroCountdown">
+                <p class="countdown-label" data-i18n="countdown.label">До закінчення реєстрації:</p>
+                <div class="countdown-boxes">
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="heroDays">00</span>
+                        <span class="countdown-unit" data-i18n="countdown.days">днів</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="heroHours">00</span>
+                        <span class="countdown-unit" data-i18n="countdown.hours">годин</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="heroMinutes">00</span>
+                        <span class="countdown-unit" data-i18n="countdown.minutes">хвилин</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="heroSeconds">00</span>
+                        <span class="countdown-unit" data-i18n="countdown.seconds">секунд</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="scroll-hint">
             <div class="scroll-arrow"></div>
@@ -827,14 +850,28 @@
                         <p class="register-note" data-i18n="register.note">Реєстрація — вносить вас у список і за вами
                             буде заброньовано місце.
                         </p>
-                        <p class="register-deadline">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
-                                height="16">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span data-i18n="register.deadline">Реєстрація відкрита до 20 січня 2026</span>
-                        </p>
+                        <!-- Countdown Timer in Form -->
+                        <div class="countdown-timer countdown-timer-form" id="formCountdown">
+                            <p class="countdown-label" data-i18n="countdown.label">До закінчення реєстрації:</p>
+                            <div class="countdown-boxes">
+                                <div class="countdown-box">
+                                    <span class="countdown-value" id="formDays">00</span>
+                                    <span class="countdown-unit" data-i18n="countdown.days">днів</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-value" id="formHours">00</span>
+                                    <span class="countdown-unit" data-i18n="countdown.hours">годин</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-value" id="formMinutes">00</span>
+                                    <span class="countdown-unit" data-i18n="countdown.minutes">хвилин</span>
+                                </div>
+                                <div class="countdown-box">
+                                    <span class="countdown-value" id="formSeconds">00</span>
+                                    <span class="countdown-unit" data-i18n="countdown.seconds">секунд</span>
+                                </div>
+                            </div>
+                        </div>
                     </form>
 
                     <!-- Success Message (hidden by default) -->

@@ -2292,19 +2292,65 @@ a {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.register-deadline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: rgba(255, 200, 100, 0.9);
-    margin-top: var(--space-sm);
+/* Countdown Timer */
+.countdown-timer {
+    margin-top: var(--space-lg);
+    text-align: center;
 }
 
-.register-deadline svg {
-    flex-shrink: 0;
-    stroke: rgba(255, 200, 100, 0.9);
+.countdown-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-sm);
+}
+
+.countdown-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    min-width: 60px;
+}
+
+.countdown-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(255, 200, 100, 1);
+    line-height: 1;
+}
+
+.countdown-unit {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+    text-transform: lowercase;
+}
+
+/* Form countdown - smaller */
+.countdown-timer-form {
+    margin-top: var(--space-md);
+}
+
+.countdown-timer-form .countdown-box {
+    padding: 8px 12px;
+    min-width: 50px;
+}
+
+.countdown-timer-form .countdown-value {
+    font-size: 1.2rem;
+}
+
+.countdown-timer-form .countdown-unit {
+    font-size: 0.65rem;
 }
 
 .register-card .btn-primary:hover {

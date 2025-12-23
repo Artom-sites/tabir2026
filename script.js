@@ -16,7 +16,60 @@ document.addEventListener('DOMContentLoaded', () => {
     initLightbox();
     initRegistrationForm();
     initIncludedSlider();
+    initCountdown();
 });
+
+/**
+ * COUNTDOWN TIMER - Registration deadline
+ */
+function initCountdown() {
+    const DEADLINE = new Date('2026-01-20T23:59:59').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = DEADLINE - now;
+
+        if (distance < 0) {
+            // Deadline passed
+            const heroTimer = document.getElementById('heroCountdown');
+            const formTimer = document.getElementById('formCountdown');
+            if (heroTimer) heroTimer.style.display = 'none';
+            if (formTimer) formTimer.style.display = 'none';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update hero countdown
+        const heroDays = document.getElementById('heroDays');
+        const heroHours = document.getElementById('heroHours');
+        const heroMinutes = document.getElementById('heroMinutes');
+        const heroSeconds = document.getElementById('heroSeconds');
+
+        if (heroDays) heroDays.textContent = String(days).padStart(2, '0');
+        if (heroHours) heroHours.textContent = String(hours).padStart(2, '0');
+        if (heroMinutes) heroMinutes.textContent = String(minutes).padStart(2, '0');
+        if (heroSeconds) heroSeconds.textContent = String(seconds).padStart(2, '0');
+
+        // Update form countdown
+        const formDays = document.getElementById('formDays');
+        const formHours = document.getElementById('formHours');
+        const formMinutes = document.getElementById('formMinutes');
+        const formSeconds = document.getElementById('formSeconds');
+
+        if (formDays) formDays.textContent = String(days).padStart(2, '0');
+        if (formHours) formHours.textContent = String(hours).padStart(2, '0');
+        if (formMinutes) formMinutes.textContent = String(minutes).padStart(2, '0');
+        if (formSeconds) formSeconds.textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Update immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
 
 /**
  * PROGRAM TABS - Switch between days
@@ -525,6 +578,13 @@ const translations = {
                 message: 'Реєстрація на табір завершилась 20 січня 2026.'
             }
         },
+        countdown: {
+            label: 'До закінчення реєстрації:',
+            days: 'днів',
+            hours: 'годин',
+            minutes: 'хвилин',
+            seconds: 'секунд'
+        },
         footer: {
             copyright: '© 2026 Зимовий Табір для молодих сімей',
             location: 'Шварцвальд, Німеччина'
@@ -712,6 +772,13 @@ const translations = {
                 title: 'Регистрация закрыта',
                 message: 'Регистрация на лагерь завершилась 20 января 2026.'
             }
+        },
+        countdown: {
+            label: 'До окончания регистрации:',
+            days: 'дней',
+            hours: 'часов',
+            minutes: 'минут',
+            seconds: 'секунд'
         },
         footer: {
             copyright: '© 2026 Зимний лагерь для молодых семей',
