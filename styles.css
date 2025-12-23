@@ -2755,6 +2755,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 100%;
     padding: 14px 28px;
     background: linear-gradient(135deg, #0088cc, #00a8e6);
     color: white;
