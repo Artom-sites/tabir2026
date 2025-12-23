@@ -218,32 +218,15 @@ body.alternative-design::before {
     height: 100%;
     background:
         linear-gradient(180deg,
-            rgba(8, 9, 12, 0.4) 0%,
-            rgba(8, 9, 12, 0.6) 40%,
-            rgba(8, 9, 12, 0.85) 100%),
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.6) 100%),
         url('media/bg-mountains.jpg') center center/cover no-repeat;
     pointer-events: none;
     z-index: -1;
 }
 
-/* Aurora blob 1 - cyan, very subtle */
-body.alternative-design::after {
-    content: '';
-    position: fixed;
-    top: -30%;
-    right: -15%;
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(circle at center,
-            rgba(100, 181, 246, 0.08) 0%,
-            rgba(100, 181, 246, 0.04) 25%,
-            transparent 60%);
-    border-radius: 50%;
-    filter: blur(100px);
-    animation: aurora-float-1 60s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-}
+/* Aurora effects removed - using mountain photo only */
 
 /* Aurora blob 2 - purple-blue */
 body {
