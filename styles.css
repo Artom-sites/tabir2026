@@ -2292,99 +2292,79 @@ a {
 }
 
 /* Countdown Timer - Editorial Style */
-/* Countdown Timer - Glassmorphism Circles */
-.countdown-glass {
-    display: flex;
+/* Countdown Timer - Glassmorphism Pill Bar */
+.countdown-pill {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 16px;
-    margin: 32px 0;
+    gap: 0;
+    margin: 28px auto 32px;
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.countdown-circle {
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.countdown-ring {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.ring-bg {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.08);
-    stroke-width: 2;
-}
-
-.ring-progress {
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 283;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.5s ease;
-}
-
-/* Ring colors - subtle gradient effect */
-.ring-days {
-    stroke: rgba(255, 255, 255, 0.4);
-}
-
-.ring-hours {
-    stroke: rgba(255, 255, 255, 0.35);
-}
-
-.ring-minutes {
-    stroke: rgba(255, 255, 255, 0.3);
-}
-
-.ring-seconds {
-    stroke: rgba(255, 255, 255, 0.25);
-}
-
-.countdown-inner {
-    position: absolute;
-    inset: 0;
+.countdown-pill .countdown-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 0 16px;
 }
 
-.countdown-glass .countdown-value {
-    font-size: 1.5rem;
+.countdown-pill .countdown-value {
+    font-size: 1.6rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1;
     font-family: var(--font-display);
+    line-height: 1;
 }
 
-.countdown-glass .countdown-label {
+.countdown-pill .countdown-label {
     font-size: 0.55rem;
     color: rgba(255, 255, 255, 0.4);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     margin-top: 4px;
 }
 
-/* Mobile - hide seconds */
+.countdown-sep {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+/* Mobile - hide seconds, compact */
 @media (max-width: 600px) {
-    .countdown-glass {
-        gap: 12px;
+    .countdown-pill {
+        padding: 12px 20px;
     }
 
-    .countdown-circle {
-        width: 65px;
-        height: 65px;
+    .countdown-pill .countdown-item {
+        padding: 0 10px;
     }
 
-    .countdown-glass .countdown-value {
+    .countdown-pill .countdown-value {
         font-size: 1.2rem;
     }
 
-    .countdown-seconds {
+    .countdown-pill .countdown-label {
+        font-size: 0.5rem;
+    }
+
+    .countdown-sep {
+        font-size: 1rem;
+    }
+
+    .countdown-item-seconds,
+    .countdown-sep-seconds {
         display: none;
     }
 }

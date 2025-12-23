@@ -742,47 +742,26 @@
                     <p data-i18n="register.subtitle">Місць обмаль — 15–20 пар. Заповніть форму, і ми зв'яжемося з вами.
                     </p>
 
-                    <!-- Countdown Timer - Glassmorphism Circles -->
-                    <div class="countdown-glass" id="formCountdown">
-                        <div class="countdown-circle">
-                            <svg class="countdown-ring" viewBox="0 0 100 100">
-                                <circle class="ring-bg" cx="50" cy="50" r="45" />
-                                <circle class="ring-progress ring-days" cx="50" cy="50" r="45" />
-                            </svg>
-                            <div class="countdown-inner">
-                                <span class="countdown-value" id="formDays">28</span>
-                                <span class="countdown-label" data-i18n="countdown.days">днів</span>
-                            </div>
+                    <!-- Countdown Timer - Glassmorphism Pill -->
+                    <div class="countdown-pill" id="formCountdown">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="formDays">28</span>
+                            <span class="countdown-label" data-i18n="countdown.days">днів</span>
                         </div>
-                        <div class="countdown-circle">
-                            <svg class="countdown-ring" viewBox="0 0 100 100">
-                                <circle class="ring-bg" cx="50" cy="50" r="45" />
-                                <circle class="ring-progress ring-hours" cx="50" cy="50" r="45" />
-                            </svg>
-                            <div class="countdown-inner">
-                                <span class="countdown-value" id="formHours">08</span>
-                                <span class="countdown-label" data-i18n="countdown.hours">годин</span>
-                            </div>
+                        <span class="countdown-sep">:</span>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="formHours">08</span>
+                            <span class="countdown-label" data-i18n="countdown.hours">годин</span>
                         </div>
-                        <div class="countdown-circle">
-                            <svg class="countdown-ring" viewBox="0 0 100 100">
-                                <circle class="ring-bg" cx="50" cy="50" r="45" />
-                                <circle class="ring-progress ring-minutes" cx="50" cy="50" r="45" />
-                            </svg>
-                            <div class="countdown-inner">
-                                <span class="countdown-value" id="formMinutes">30</span>
-                                <span class="countdown-label" data-i18n="countdown.minutes">хвилин</span>
-                            </div>
+                        <span class="countdown-sep">:</span>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="formMinutes">30</span>
+                            <span class="countdown-label" data-i18n="countdown.minutes">хвилин</span>
                         </div>
-                        <div class="countdown-circle countdown-seconds">
-                            <svg class="countdown-ring" viewBox="0 0 100 100">
-                                <circle class="ring-bg" cx="50" cy="50" r="45" />
-                                <circle class="ring-progress ring-seconds" cx="50" cy="50" r="45" />
-                            </svg>
-                            <div class="countdown-inner">
-                                <span class="countdown-value" id="formSeconds">45</span>
-                                <span class="countdown-label" data-i18n="countdown.seconds">секунд</span>
-                            </div>
+                        <span class="countdown-sep countdown-sep-seconds">:</span>
+                        <div class="countdown-item countdown-item-seconds">
+                            <span class="countdown-value" id="formSeconds">45</span>
+                            <span class="countdown-label" data-i18n="countdown.seconds">секунд</span>
                         </div>
                     </div>
 
