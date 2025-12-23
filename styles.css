@@ -2292,7 +2292,7 @@ a {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Countdown Timer - Simple Integrated Style */
+/* Countdown Timer - Calm Reminder Style */
 .countdown-timer {
     margin-top: var(--space-md);
     margin-bottom: var(--space-lg);
@@ -2301,58 +2301,51 @@ a {
 
 .countdown-label {
     font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
     margin-bottom: var(--space-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-weight: 400;
 }
 
 .countdown-boxes {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    gap: 6px;
-    align-items: center;
+    gap: 0;
+    align-items: baseline;
 }
 
 .countdown-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 14px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 0 8px;
 }
 
-.countdown-box::after {
-    content: ':';
-    position: absolute;
-    right: -8px;
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.2);
-    font-weight: 300;
-}
-
-.countdown-box:last-child::after {
-    display: none;
+/* Separator between boxes */
+.countdown-box:not(:last-child)::after {
+    content: '·';
+    margin-left: 8px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.15);
 }
 
 .countdown-value {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1;
     font-family: var(--font-display);
 }
 
 .countdown-unit {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: rgba(255, 255, 255, 0.35);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-    margin-top: 4px;
+    font-weight: 400;
+}
+
+/* Days get subtle emphasis */
+.countdown-box:first-child .countdown-value {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* Form countdown */
@@ -2360,34 +2353,23 @@ a {
     margin: var(--space-md) 0;
 }
 
-.countdown-timer-form .countdown-box {
-    padding: 8px 12px;
-}
-
 .countdown-timer-form .countdown-value {
     font-size: 1.1rem;
 }
 
 .countdown-timer-form .countdown-unit {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
 }
 
-/* Mobile responsive */
-@media (max-width: 480px) {
-    .countdown-boxes {
-        gap: 4px;
+/* Mobile - hide seconds, focus on days/hours/minutes */
+@media (max-width: 600px) {
+    .countdown-box:last-child {
+        display: none;
     }
 
-    .countdown-box {
-        padding: 8px 10px;
-    }
-
-    .countdown-value {
-        font-size: 1.1rem;
-    }
-
-    .countdown-unit {
-        font-size: 0.5rem;
+    /* Now third becomes last, hide its separator */
+    .countdown-box:nth-child(3)::after {
+        display: none;
     }
 }
 
