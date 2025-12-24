@@ -1194,8 +1194,8 @@ a {
 
 /* PNG icons with transparent background effect */
 .feature-icon-img {
-    width: 64px;
-    height: 64px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto var(--space-md);
     display: block;
     object-fit: contain;
