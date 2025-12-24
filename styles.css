@@ -1192,13 +1192,21 @@ a {
     stroke-width: 1.5;
 }
 
-/* PNG icons with transparent background effect */
+/* PNG icons with transparent glass effect */
 .feature-icon-img {
     width: 80px;
     height: 80px;
     margin: 0 auto var(--space-md);
     display: block;
     object-fit: contain;
+    opacity: 0.85;
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.1));
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-img {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .feature-card h3 {
