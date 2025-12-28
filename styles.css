@@ -1913,9 +1913,7 @@ button.meta-item {
 /* FAQ Ask Question Section */
 .faq-ask-question {
     text-align: center;
-    margin-top: var(--space-xl);
-    padding-top: var(--space-lg);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--space-lg);
 }
 
 .faq-ask-question p {
