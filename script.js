@@ -67,7 +67,7 @@ function initConfirmModal() {
     // Calendar button - opens calendar modal
     const calendarModal = document.getElementById('calendarModal');
     const calendarModalCancel = document.getElementById('calendarModalCancel');
-    const calendarModalConfirm = document.getElementById('calendarModalConfirm');
+    const calendarModalAdd = document.getElementById('calendarModalAdd');
 
     if (calendarBtn && calendarModal) {
         calendarBtn.addEventListener('click', () => {
@@ -83,11 +83,10 @@ function initConfirmModal() {
 
         calendarModalCancel.addEventListener('click', closeCalendarModal);
 
-        // Confirm - navigate to .ics file (opens native calendar)
-        calendarModalConfirm.addEventListener('click', () => {
-            window.location.href = 'wintercamp.ics';
-            closeCalendarModal();
-        });
+        // Close modal when clicking the link
+        if (calendarModalAdd) {
+            calendarModalAdd.addEventListener('click', closeCalendarModal);
+        }
 
         // Click outside to close
         calendarModal.addEventListener('click', (e) => {

@@ -4,13 +4,13 @@ PRODID:-//Winter Camp//Tabir 2026//UK
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-DTSTART:20260209T170000
-DTEND:20260212T130000
-DTSTAMP:20241228T140000Z
-UID:wintercamp2026@tabir.example.com
+DTSTART:20260209T160000Z
+DTEND:20260212T120000Z
+DTSTAMP:20241228T180000Z
+UID:wintercamp2026-20260209@tabir2026.github.io
 SUMMARY:Зимовий Табір для молодих сімей
-DESCRIPTION:Християнський табір для молодих пар — лижі, спорт, тренінги та духовне зростання разом.
-LOCATION:Schwarzwald, Germany
+DESCRIPTION:Християнський табір для молодих пар — лижі\, спорт\, тренінги та духовне зростання разом.
+LOCATION:Schwarzwald\, Germany
 URL:https://artom-sites.github.io/tabir2026/
 STATUS:CONFIRMED
 END:VEVENT
