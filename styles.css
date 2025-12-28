@@ -569,7 +569,7 @@ body.alternative-design .sun-icon {
 .sound-toggle {
     position: fixed;
     top: 20px;
-    right: 80px;
+    left: 20px;
     z-index: 1000;
     width: 44px;
     height: 44px;
