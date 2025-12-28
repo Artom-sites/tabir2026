@@ -485,6 +485,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Question Modal -->
+    <div class="confirm-modal" id="questionModal">
+        <div class="confirm-modal-content question-modal-content">
+            <h3>❓ Задати запитання</h3>
+            <p>Напишіть ваше запитання і ми відповімо якнайшвидше</p>
+            <form id="questionForm">
+                <textarea id="questionText" placeholder="Ваше запитання..." rows="4" required></textarea>
+                <div class="confirm-modal-buttons">
+                    <button type="button" class="btn-cancel" id="questionModalCancel">Скасувати</button>
+                    <button type="submit" class="btn-confirm">Відправити</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- What's Included Section -->
     <section class="section included" id="included">
         <div class="container">
@@ -643,8 +658,14 @@
                             Вечорами — спільний час, співи та спілкування.</p>
                     </div>
                 </div>
+
+                <!-- Ask Question Button -->
+                <div class="faq-ask-question reveal">
+                    <p data-i18n="faq.askMore">Не знайшли відповідь?</p>
+                    <button class="btn btn-primary" id="askQuestionBtn" data-i18n="faq.askButton">Задати
+                        запитання</button>
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- Register Section -->

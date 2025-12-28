@@ -1910,6 +1910,46 @@ button.meta-item {
     min-width: 100px;
 }
 
+/* FAQ Ask Question Section */
+.faq-ask-question {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-ask-question p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-md);
+}
+
+/* Question Modal */
+.question-modal-content {
+    max-width: 450px;
+}
+
+.question-modal-content textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: var(--space-md);
+}
+
+.question-modal-content textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.question-modal-content textarea:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
 /* Lightbox Navigation Arrows */
 .lightbox-prev,
 .lightbox-next {

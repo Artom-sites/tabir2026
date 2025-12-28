@@ -97,6 +97,62 @@ function initConfirmModal() {
         });
     }
 
+    // Question modal
+    const questionModal = document.getElementById('questionModal');
+    const questionForm = document.getElementById('questionForm');
+    const questionText = document.getElementById('questionText');
+    const questionModalCancel = document.getElementById('questionModalCancel');
+    const askQuestionBtn = document.getElementById('askQuestionBtn');
+
+    if (askQuestionBtn && questionModal) {
+        askQuestionBtn.addEventListener('click', () => {
+            questionModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeQuestionModal = () => {
+            questionModal.classList.remove('active');
+            document.body.style.overflow = '';
+            questionText.value = '';
+        };
+
+        questionModalCancel.addEventListener('click', closeQuestionModal);
+
+        questionModal.addEventListener('click', (e) => {
+            if (e.target === questionModal) {
+                closeQuestionModal();
+            }
+        });
+
+        // Send question to Telegram
+        questionForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const question = questionText.value.trim();
+            if (!question) return;
+
+            const TELEGRAM_BOT_TOKEN = '8566564117:AAF1h19DyvrqPXt2bylV7FZzjI4vkFuIdQo';
+            const TELEGRAM_CHAT_ID = '-1003368695156';
+
+            const message = `❓ *Нове запитання з сайту*\n\n${question}`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                alert('Дякуємо! Ваше запитання відправлено.');
+            } catch (error) {
+                alert('Помилка відправки. Спробуйте пізніше.');
+            }
+            closeQuestionModal();
+        });
+    }
+
     // Confirm button
     confirmBtn.addEventListener('click', () => {
         if (pendingUrl) {
