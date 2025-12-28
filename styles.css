@@ -1974,6 +1974,16 @@ button.meta-item {
         0 8px 24px rgba(102, 126, 234, 0.3);
 }
 
+.question-modal-content .btn-cancel {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.question-modal-content .btn-cancel:hover {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: rgba(239, 68, 68, 0.45);
+}
+
 /* Lightbox Navigation Arrows */
 .lightbox-prev,
 .lightbox-next {
