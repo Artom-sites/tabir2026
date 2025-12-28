@@ -159,28 +159,63 @@ function initCountdown() {
  */
 function initFlipCards() {
     const flipCards = document.querySelectorAll('.flip-card');
+    const SWIPE_THRESHOLD = 10; // pixels - if moved more, it's a swipe
+
+    // Function to close all cards except the given one
+    const closeOtherCards = (exceptCard) => {
+        flipCards.forEach(c => {
+            if (c !== exceptCard && c.classList.contains('flipped')) {
+                c.classList.remove('flipped');
+            }
+        });
+    };
+
+    // Function to toggle card with accordion behavior
+    const toggleCard = (card) => {
+        const isOpening = !card.classList.contains('flipped');
+        if (isOpening) {
+            closeOtherCards(card);
+        }
+        card.classList.toggle('flipped');
+    };
 
     flipCards.forEach(card => {
-        // Handle both click and touch
-        const handleFlip = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            card.classList.toggle('flipped');
-        };
+        // Track touch position to detect swipe vs tap
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let isTap = false;
 
-        card.addEventListener('click', handleFlip);
+        card.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            isTap = true;
+        }, { passive: true });
 
-        // Touch event for better Android support
-        let touchStarted = false;
-        card.addEventListener('touchstart', () => {
-            touchStarted = true;
+        card.addEventListener('touchmove', (e) => {
+            if (!isTap) return;
+            const touch = e.touches[0];
+            const deltaX = Math.abs(touch.clientX - touchStartX);
+            const deltaY = Math.abs(touch.clientY - touchStartY);
+            // If moved more than threshold, it's a swipe not a tap
+            if (deltaX > SWIPE_THRESHOLD || deltaY > SWIPE_THRESHOLD) {
+                isTap = false;
+            }
         }, { passive: true });
 
         card.addEventListener('touchend', (e) => {
-            if (touchStarted) {
+            if (isTap) {
                 e.preventDefault();
-                card.classList.toggle('flipped');
-                touchStarted = false;
+                toggleCard(card);
+            }
+            isTap = false;
+        });
+
+        // Desktop click
+        card.addEventListener('click', (e) => {
+            // Only handle click on non-touch devices
+            if (e.pointerType !== 'touch') {
+                toggleCard(card);
             }
         });
 
@@ -190,7 +225,7 @@ function initFlipCards() {
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                card.classList.toggle('flipped');
+                toggleCard(card);
             }
         });
     });
