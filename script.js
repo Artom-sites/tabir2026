@@ -131,7 +131,7 @@ function initConfirmModal() {
             if (!question) return;
 
             const TELEGRAM_BOT_TOKEN = '8566564117:AAF1h19DyvrqPXt2bylV7FZzjI4vkFuIdQo';
-            const TELEGRAM_CHAT_ID = '-1003368695156';
+            const TELEGRAM_CHAT_ID = '-1003616470575';
 
             const message = `❓ *Нове запитання з сайту*\n\n${question}`;
 
