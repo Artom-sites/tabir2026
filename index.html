@@ -13,10 +13,15 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="preload" href="media/hero-bg-new.png" as="image">
-    <link rel="stylesheet" href="styles.css?v=45">
+    <link rel="stylesheet" href="styles.css?v=46">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
 </head>
 
 <body class="alternative-design">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
 
     <!-- Language Toggle -->
     <button class="theme-toggle" id="languageToggle" aria-label="Змінити мову" data-i18n-aria="nav.langLabel">
@@ -460,9 +465,17 @@
 
     <!-- Confirmation Modal -->
     <div class="confirm-modal" id="confirmModal">
-        <div class="confirm-modal-content">
+        <div class="confirm-modal-content confirm-modal-wide">
             <h3 id="confirmModalTitle">Підтвердити</h3>
             <p id="confirmModalText">Ви хочете продовжити?</p>
+            <!-- Interactive Map -->
+            <div class="modal-map" id="modalMap">
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=7.8%2C47.8%2C8.4%2C48.2&layer=mapnik&marker=48.0%2C8.1"
+                    style="border: 0; width: 100%; height: 200px; border-radius: 12px; margin-bottom: 16px;"
+                    loading="lazy">
+                </iframe>
+            </div>
             <div class="confirm-modal-buttons">
                 <button class="btn-cancel" id="confirmModalCancel">Скасувати</button>
                 <button class="btn-confirm" id="confirmModalConfirm">Відкрити</button>

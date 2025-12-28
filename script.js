@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountdown();
     initFlipCards();
     initConfirmModal();
+    initScrollProgress();
+    init3DCards();
 });
 
 /**
@@ -1717,4 +1719,44 @@ function initIncludedSlider() {
     // Initialize
     createDots();
     updateSlider();
+}
+
+/**
+ * SCROLL PROGRESS BAR
+ */
+function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+/**
+ * 3D CARD TILT EFFECT
+ */
+function init3DCards() {
+    const cards = document.querySelectorAll('.feature-card-inner, .glass-card, .service-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
 }

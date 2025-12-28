@@ -133,6 +133,19 @@ html {
     width: 100%;
 }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    z-index: 10000;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
@@ -1826,6 +1839,10 @@ button.meta-item {
         0 32px 64px -16px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
     animation: modalSlideIn 0.3s ease;
+}
+
+.confirm-modal-wide {
+    max-width: 420px;
 }
 
 @keyframes modalSlideIn {
