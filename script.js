@@ -795,6 +795,7 @@ const translations = {
                 addChild: 'Додати дитину',
                 childName: 'Ім\'я дитини',
                 childAge: 'Вік',
+                agePlaceholder: 'напр. 2 р. або 5 міс.',
                 comments: 'Коментарі або запитання',
                 commentsPlaceholder: 'Додаткова інформація, особливі потреби, запитання...'
             },
@@ -1003,12 +1004,13 @@ const translations = {
                 addChild: 'Добавить ребёнка',
                 childName: 'Имя ребёнка',
                 childAge: 'Возраст',
+                agePlaceholder: 'напр. 2 г. или 5 мес.',
                 comments: 'Комментарии или вопросы',
                 commentsPlaceholder: 'Дополнительная информация, особые потребности, вопросы...'
             },
             submit: 'Отправить заявку',
             note: 'Регистрация — вносит вас в список и за вами будет забронировано место.',
-            deadline: 'Регистрация открыта до 20 января 2026',
+            deadline: 'Регистрация открыта до 11 января 2026',
             success: {
                 title: 'Спасибо за регистрацию!',
                 message: 'Мы свяжемся с вами в ближайшее время.',
@@ -1016,7 +1018,7 @@ const translations = {
             },
             closed: {
                 title: 'Регистрация закрыта',
-                message: 'Регистрация на лагерь завершилась 20 января 2026.'
+                message: 'Регистрация на лагерь завершилась 11 января 2026.'
             }
         },
         countdown: {
@@ -1035,18 +1037,13 @@ const translations = {
 
 // Список доступних мов для перемикання
 const languages = ['ua', 'ru'];
+let currentLang = localStorage.getItem('language') || 'ua';
+if (!languages.includes(currentLang)) currentLang = 'ua';
 
 function initLanguageToggle() {
     const toggle = document.getElementById('languageToggle');
     if (!toggle) return;
 
-    // Визначити поточну мову (default українська)
-    let currentLang = localStorage.getItem('language') || 'ua';
-
-    // Переконатися, що мова є в списку
-    if (!languages.includes(currentLang)) {
-        currentLang = 'ua';
-    }
 
     // Встановити початковий текст
     updateLanguage(currentLang);
@@ -1543,10 +1540,11 @@ function initRegistrationForm() {
     }
 
     function createChildEntry() {
+        const t = translations[currentLang].register.form;
         return `
             <div class="child-entry">
                 <div class="child-entry-header">
-                    <h4 class="child-entry-title">Дитина</h4>
+                    <h4 class="child-entry-title">${t.childName || 'Дитина'}</h4>
                     <button type="button" class="btn-remove-child" aria-label="Видалити дитину">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1556,12 +1554,12 @@ function initRegistrationForm() {
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Ім'я *</label>
+                        <label>${t.childName}</label>
                         <input type="text" name="childFirstName[]" required>
                     </div>
                     <div class="form-group">
-                        <label>Вік (років) *</label>
-                        <input type="number" name="childAge[]" min="0" max="18" required>
+                        <label>${t.childAge}</label>
+                        <input type="text" name="childAge[]" placeholder="${t.agePlaceholder || 'напр. 2 р. або 5 міс.'}" required>
                     </div>
                 </div>
             </div>
