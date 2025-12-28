@@ -1203,9 +1203,10 @@ function initLightbox() {
             lightboxVideo.style.display = 'none';
         } else if (item.type === 'video') {
             lightboxVideo.src = item.src;
-            lightboxVideo.poster = item.poster;
+            lightboxVideo.removeAttribute('poster'); // No poster in lightbox
             lightboxImage.style.display = 'none';
             lightboxVideo.style.display = 'block';
+            lightboxVideo.play(); // Autoplay video
         }
 
         counter.textContent = `${currentIndex + 1} / ${allGalleryItems.length}`;
