@@ -18,7 +18,92 @@ document.addEventListener('DOMContentLoaded', () => {
     initIncludedSlider();
     initCountdown();
     initFlipCards();
+    initConfirmModal();
 });
+
+/**
+ * CONFIRMATION MODAL - For location and calendar buttons
+ */
+function initConfirmModal() {
+    const modal = document.getElementById('confirmModal');
+    const modalTitle = document.getElementById('confirmModalTitle');
+    const modalText = document.getElementById('confirmModalText');
+    const confirmBtn = document.getElementById('confirmModalConfirm');
+    const cancelBtn = document.getElementById('confirmModalCancel');
+    const locationBtn = document.getElementById('locationBtn');
+    const calendarBtn = document.getElementById('calendarBtn');
+
+    if (!modal) return;
+
+    let pendingUrl = '';
+    let pendingMode = 'link';
+
+    function showModal(title, text, url, mode = 'link') {
+        modalTitle.textContent = title;
+        modalText.textContent = text;
+        pendingUrl = url;
+        pendingMode = mode;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hideModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        pendingUrl = '';
+        pendingMode = 'link';
+    }
+
+    // Location button
+    if (locationBtn) {
+        locationBtn.addEventListener('click', () => {
+            const url = locationBtn.dataset.url;
+            const title = locationBtn.dataset.modalTitle || 'Відкрити посилання?';
+            const text = locationBtn.dataset.modalText || '';
+            showModal(title, text, url, 'link');
+        });
+    }
+
+    // Calendar button - download .ics file
+    if (calendarBtn) {
+        calendarBtn.addEventListener('click', () => {
+            const title = 'Додати в календар?';
+            const text = 'Зимовий табір: 9–12 лютого 2026';
+            showModal(title, text, 'wintercamp.ics', 'download');
+        });
+    }
+
+    // Confirm button
+    confirmBtn.addEventListener('click', () => {
+        if (pendingUrl) {
+            if (pendingMode === 'download') {
+                // Navigate to .ics file - this opens native calendar on mobile
+                window.location.href = pendingUrl;
+            } else {
+                // Open link in new tab
+                window.open(pendingUrl, '_blank');
+            }
+        }
+        hideModal();
+    });
+
+    // Cancel button
+    cancelBtn.addEventListener('click', hideModal);
+
+    // Click outside to close
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            hideModal();
+        }
+    });
+}
 
 /**
  * COUNTDOWN TIMER - Registration deadline

@@ -32,19 +32,23 @@
             <div class="snow-overlay"></div>
         </div>
         <div class="hero-content">
-            <span class="hero-eyebrow">
+            <button class="hero-eyebrow" id="locationBtn" data-url="https://maps.google.com/?q=Schwarzwald,Germany"
+                data-modal-title="Відкрити Google Maps?"
+                data-modal-text="Переглянути розташування табору в Шварцвальді">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                 </svg>
                 <span data-i18n="hero.location">Шварцвальд, Німеччина</span>
-            </span>
+            </button>
             <h1 class="hero-title" data-i18n="hero.title" data-i18n-html="true">Зимовий табір<br><em>для молодих
                     сімей</em></h1>
             <p class="hero-subtitle" data-i18n="hero.subtitle">Християнський табір для молодих пар — лижі, спорт,
                 тренінги та духовне зростання разом.</p>
             <div class="hero-meta">
-                <span class="meta-item">
+                <button class="meta-item" id="calendarBtn"
+                    data-url="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Зимовий+Табір+для+молодих+сімей&dates=20260209T170000/20260212T130000&details=Християнський+табір+для+молодих+пар+—+лижі,+спорт,+тренінги+та+духовне+зростання.&location=Schwarzwald,+Germany"
+                    data-modal-title="Додати в календар?" data-modal-text="Зимовий табір: 9–12 лютого 2026">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                         <line x1="16" y1="2" x2="16" y2="6" />
@@ -52,7 +56,7 @@
                         <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                     <span data-i18n="hero.dates">9–12 лютого</span>
-                </span>
+                </button>
                 <span class="meta-item">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -458,6 +462,17 @@
         <img class="lightbox-image" id="lightboxImage" src="" alt="">
     </div>
 
+    <!-- Confirmation Modal -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-modal-content">
+            <h3 id="confirmModalTitle">Підтвердити</h3>
+            <p id="confirmModalText">Ви хочете продовжити?</p>
+            <div class="confirm-modal-buttons">
+                <button class="btn-cancel" id="confirmModalCancel">Скасувати</button>
+                <button class="btn-confirm" id="confirmModalConfirm">Відкрити</button>
+            </div>
+        </div>
+    </div>
     <!-- What's Included Section -->
     <section class="section included" id="included">
         <div class="container">
