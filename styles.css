@@ -3039,11 +3039,14 @@ button.meta-item {
 /* Child Entry */
 .child-entry {
     padding: var(--space-md);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-md);
     margin-bottom: var(--space-md);
     position: relative;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
 }
 
 .child-entry-header {
