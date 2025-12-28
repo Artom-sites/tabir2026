@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRegistrationForm();
     initIncludedSlider();
     initCountdown();
+    initFlipCards();
 });
 
 /**
@@ -69,6 +70,30 @@ function initCountdown() {
     // Update immediately and then every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
+
+/**
+ * FLIP CARDS - Toggle flip on click/tap
+ */
+function initFlipCards() {
+    const flipWrappers = document.querySelectorAll('.feature-card-wrapper');
+
+    flipWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', () => {
+            // Toggle flipped class on click
+            wrapper.classList.toggle('flipped');
+        });
+
+        // Also handle keyboard navigation
+        wrapper.setAttribute('tabindex', '0');
+        wrapper.setAttribute('role', 'button');
+        wrapper.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                wrapper.classList.toggle('flipped');
+            }
+        });
+    });
 }
 
 /**
