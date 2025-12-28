@@ -412,10 +412,10 @@ function initScrollReveal(rootEl = document) {
 
     if (prefersReducedMotion) return;
 
-    // IntersectionObserver - trigger 200px before element enters viewport
+    // IntersectionObserver - trigger 100px before element enters viewport
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px 200px 0px',
+        rootMargin: '0px 0px 100px 0px',
         threshold: 0
     };
 
@@ -436,7 +436,7 @@ function initScrollReveal(rootEl = document) {
     // Also handle legacy .reveal sections
     const sectionOptions = {
         root: null,
-        rootMargin: '0px 0px 200px 0px',
+        rootMargin: '0px 0px 100px 0px',
         threshold: 0
     };
 
