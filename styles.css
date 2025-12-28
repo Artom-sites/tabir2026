@@ -146,6 +146,17 @@ html {
     box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
 }
 
+/* Snow Canvas */
+.snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
@@ -3405,4 +3416,85 @@ button.meta-item {
     font-size: 0.9rem;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   SKELETON LOADING ANIMATION
+   ========================================== */
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 1em;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-text:last-child {
+    width: 70%;
+}
+
+.skeleton-image {
+    aspect-ratio: 16/9;
+    width: 100%;
+}
+
+.skeleton-circle {
+    border-radius: 50%;
+}
+
+/* Pull-to-Refresh Indicator */
+.pull-indicator {
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.3s ease;
+    z-index: 9998;
+}
+
+.pull-indicator.visible {
+    top: 20px;
+}
+
+.pull-indicator svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

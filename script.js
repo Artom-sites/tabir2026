@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initConfirmModal();
     initScrollProgress();
     init3DCards();
+    initSnow();
 });
 
 /**
@@ -1759,4 +1760,73 @@ function init3DCards() {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
+}
+
+/**
+ * SNOW PARTICLES ANIMATION
+ */
+function initSnow() {
+    const canvas = document.getElementById('snowCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let snowflakes = [];
+    const maxSnowflakes = 80;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Snowflake {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * -canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speed = Math.random() * 1 + 0.5;
+            this.wind = Math.random() * 0.5 - 0.25;
+            this.opacity = Math.random() * 0.6 + 0.3;
+        }
+
+        update() {
+            this.y += this.speed;
+            this.x += this.wind;
+
+            if (this.y > canvas.height) {
+                this.reset();
+                this.y = -10;
+            }
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    // Create snowflakes
+    for (let i = 0; i < maxSnowflakes; i++) {
+        snowflakes.push(new Snowflake());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        snowflakes.forEach(flake => {
+            flake.update();
+            flake.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
