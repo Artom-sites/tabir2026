@@ -166,16 +166,19 @@ body.light-mode .snow-canvas {
 .mode-toggle svg {
     width: 22px;
     height: 22px;
-    color: white;
+    stroke: white;
+    fill: none;
     transition: all 0.3s ease;
 }
 
 .mode-toggle .sun-icon {
     display: none;
+    position: absolute;
 }
 
 .mode-toggle .moon-icon {
     display: block;
+    position: absolute;
 }
 
 body.light-mode .mode-toggle {
@@ -184,7 +187,7 @@ body.light-mode .mode-toggle {
 }
 
 body.light-mode .mode-toggle svg {
-    color: #1a1a1a;
+    stroke: #1a1a1a;
 }
 
 body.light-mode .mode-toggle .sun-icon {
