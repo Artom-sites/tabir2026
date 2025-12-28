@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initConfirmModal();
     init3DCards();
     initSnow();
+    initSoundToggle();
 });
 
 /**
@@ -1481,6 +1482,8 @@ function initRegistrationForm() {
                 // Show success message
                 form.style.display = 'none';
                 formSuccess.style.display = 'block';
+                // Launch confetti celebration! 🎊
+                launchConfetti();
             } else {
                 console.error('❌ Помилка відправки в Telegram:', await response.text());
                 alert('Помилка відправки заявки. Спробуйте пізніше.');
@@ -1816,5 +1819,109 @@ function initSnow() {
     }
 
     animate();
+}
+
+/**
+ * CONFETTI CELEBRATION - Launch confetti on successful registration 🎊
+ */
+function launchConfetti() {
+    const duration = 3000;
+    const particleCount = 100;
+    const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96E6A1', '#DDA0DD', '#fff'];
+
+    // Create confetti container
+    const container = document.createElement('div');
+    container.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10000;
+        overflow: hidden;
+    `;
+    document.body.appendChild(container);
+
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        const size = Math.random() * 10 + 5;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const startX = Math.random() * 100;
+        const startY = -10;
+        const rotation = Math.random() * 360;
+        const delay = Math.random() * 500;
+
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            left: ${startX}%;
+            top: ${startY}%;
+            transform: rotate(${rotation}deg);
+            opacity: 1;
+            border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+        `;
+
+        container.appendChild(particle);
+
+        // Animate particle
+        const endX = startX + (Math.random() - 0.5) * 40;
+        const endY = 110;
+        const animDuration = duration + Math.random() * 1000;
+
+        particle.animate([
+            { transform: `translate(0, 0) rotate(${rotation}deg)`, opacity: 1 },
+            { transform: `translate(${(endX - startX)}vw, ${endY}vh) rotate(${rotation + 720}deg)`, opacity: 0 }
+        ], {
+            duration: animDuration,
+            delay: delay,
+            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        });
+    }
+
+    // Remove container after animation
+    setTimeout(() => {
+        container.remove();
+    }, duration + 1500);
+}
+
+/**
+ * SOUND TOGGLE - Ambient snow/wind sound
+ */
+function initSoundToggle() {
+    const soundToggle = document.getElementById('soundToggle');
+    if (!soundToggle) return;
+
+    // Create audio element
+    const audio = new Audio('media/snow-wind.mp3');
+    audio.loop = true;
+    audio.volume = 0.3; // Soft background volume
+
+    let isPlaying = false;
+
+    soundToggle.addEventListener('click', () => {
+        if (isPlaying) {
+            audio.pause();
+            soundToggle.classList.remove('playing');
+            soundToggle.setAttribute('aria-label', 'Увімкнути звук снігу');
+        } else {
+            audio.play().catch(e => console.log('Audio play failed:', e));
+            soundToggle.classList.add('playing');
+            soundToggle.setAttribute('aria-label', 'Вимкнути звук снігу');
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // Pause audio when page is not visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isPlaying) {
+            audio.pause();
+        } else if (!document.hidden && isPlaying) {
+            audio.play().catch(e => console.log('Audio play failed:', e));
+        }
+    });
 }
 
