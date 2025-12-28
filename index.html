@@ -19,29 +19,8 @@
 </head>
 
 <body class="alternative-design">
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
     <!-- Snow Particles -->
     <canvas id="snowCanvas" class="snow-canvas"></canvas>
-
-    <!-- Theme Toggle (Light/Dark) -->
-    <button class="mode-toggle" id="themeToggle" aria-label="Змінити тему">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-    </button>
 
     <!-- Language Toggle -->
     <button class="theme-toggle" id="languageToggle" aria-label="Змінити мову" data-i18n-aria="nav.langLabel">
@@ -57,14 +36,14 @@
             <div class="snow-overlay"></div>
         </div>
         <div class="hero-content">
-            <button class="hero-eyebrow" id="locationBtn" data-url="https://maps.google.com/?q=Schwarzwald,Germany"
-                data-modal-title="Відкрити Google Maps?"
-                data-modal-text="Переглянути розташування табору в Шварцвальді">
+            <button class="hero-eyebrow" id="locationBtn"
+                data-url="https://maps.google.com/?q=Am+Sieperloh+7,+34508+Willingen,Germany"
+                data-modal-title="Відкрити Google Maps?" data-modal-text="Переглянути розташування табору у Willingen">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span data-i18n="hero.location">Шварцвальд, Німеччина</span>
+                <span data-i18n="hero.location">Willingen, Німеччина</span>
             </button>
             <h1 class="hero-title" data-i18n="hero.title" data-i18n-html="true">Зимовий табір<br><em>для молодих
                     сімей</em></h1>
@@ -87,7 +66,7 @@
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
-                    <span data-i18n="hero.couples">15–20 сімей</span>
+                    <span data-i18n="hero.couples">до 30 сімей</span>
                 </span>
             </div>
         </div>
@@ -138,7 +117,7 @@
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <img src="media/icon-activities.png" alt="Активності" class="feature-icon-img">
-                                <h3 data-i18n="features.activities.title">Активності</h3>
+                                <h3 data-i18n="features.activities.title">Активності, вікторини</h3>
                             </div>
                             <div class="flip-card-back">
                                 <p data-i18n="features.activities.desc">Баня, більярд, боулінг, волейбол</p>
@@ -203,7 +182,7 @@
                             <div class="day-details reveal">
                                 <h3 data-i18n="program.day1.title">Неділя, 9 лютого: знайомство</h3>
                                 <ul class="timeline">
-                                    <li><span class="time">17:00</span><span class="event"
+                                    <li><span class="time">16:00</span><span class="event"
                                             data-i18n="program.day1.event1">Приїзд та заселення</span></li>
                                     <li><span class="time">18:00</span><span class="event"
                                             data-i18n="program.day1.event2">Спільна вечеря</span></li>
@@ -275,7 +254,7 @@
                                     <li><span class="time">19:00</span><span class="event"
                                             data-i18n="program.day3.event6">Вечеря</span></li>
                                     <li><span class="time">20:30</span><span class="event"
-                                            data-i18n="program.day3.event7">Ігри та вікторини</span></li>
+                                            data-i18n="program.day3.event7">Біблійні вікторини та ігри</span></li>
                                 </ul>
                                 <p class="day-note" data-i18n="program.day3.note">День спілкування ❤️</p>
                             </div>
@@ -302,7 +281,7 @@
                                             data-i18n="program.day4.event3">Час для збирання речей</span></li>
                                     <li><span class="time">12:30</span><span class="event"
                                             data-i18n="program.day4.event4">Обід та прощання</span></li>
-                                    <li><span class="time">13:00</span><span class="event"
+                                    <li><span class="time">14:00</span><span class="event"
                                             data-i18n="program.day4.event5">Від'їзд</span></li>
                                 </ul>
                                 <p class="day-note" data-i18n="program.day4.note">До побачення 👋</p>
@@ -443,6 +422,10 @@
             <!-- ... gallery grid ... -->
             <div class="gallery-grid reveal">
                 <div class="gallery-item">
+                    <img src="media/gallery-5.jpg" alt="Skywalk Willingen - другий за висотою міст в Європі"
+                        loading="lazy">
+                </div>
+                <div class="gallery-item">
                     <img src="media/gallery-1.jpeg" alt="Табір в горах" loading="lazy">
                 </div>
                 <div class="gallery-item">
@@ -464,6 +447,16 @@
                 </div>
                 <div class="gallery-item">
                     <img src="media/gallery-4.jpg" alt="Відпочинок" loading="lazy">
+                </div>
+                <div class="gallery-item gallery-item-video">
+                    <video class="gallery-video" poster="media/gallery-5.jpg" preload="auto" playsinline>
+                        <source src="media/gallery-video-2.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-play-overlay">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -635,7 +628,8 @@
                         <span class="accordion-icon"></span>
                     </button>
                     <div class="accordion-content">
-                        <p data-i18n="faq.q1.answer">Табір відкритий для християнських сімей. Якщо ви хочете
+                        <p data-i18n="faq.q1.answer">Табір для християнських сімей до 10 років спільного життя. Якщо ви
+                            хочете
                             активно провести час, навчитися новому та поспілкуватися з Богом — ви запрошені!</p>
                     </div>
                 </div>
@@ -646,9 +640,8 @@
                         <span class="accordion-icon"></span>
                     </button>
                     <div class="accordion-content">
-                        <p data-i18n="faq.q2.answer" data-i18n-html="true"><strong>Так.</strong> Додаткову інформацію
-                            можна запитати відправивши своє запитання
-                            разом із заявкою.</p>
+                        <p data-i18n="faq.q2.answer" data-i18n-html="true"><strong>Так.</strong> Вкажіть інформацію про
+                            дітей у додатковій інформації при реєстрації.</p>
                     </div>
                 </div>
 
@@ -659,8 +652,8 @@
                         <span class="accordion-icon"></span>
                     </button>
                     <div class="accordion-content">
-                        <p data-i18n="faq.q4.answer">Біблію, Теплий одяг, Гарний настрій! Детальний список
-                            надішлемо після реєстрації.</p>
+                        <p data-i18n="faq.q4.answer">Постільну білизну, теплий одяг (для гір), засоби гігієни, Біблію та
+                            гарний настрій!</p>
                     </div>
                 </div>
 
@@ -726,7 +719,7 @@
 
                     <h2 data-i18n="register.title">Готові?</h2>
 
-                    <p data-i18n="register.subtitle">Місць обмаль — 15–20 пар. Заповніть форму, і ми зв'яжемося з вами.
+                    <p data-i18n="register.subtitle">Місць обмаль — до 30 пар. Заповніть форму, і ми зв'яжемося з вами.
                     </p>
 
                     <form class="registration-form" id="registrationForm">
