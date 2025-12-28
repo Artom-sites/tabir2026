@@ -1047,6 +1047,7 @@ button.meta-item {
     width: 100%;
     height: 160px;
     perspective: 1000px;
+    cursor: pointer;
 }
 
 .flip-card-inner {
@@ -1058,7 +1059,15 @@ button.meta-item {
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+/* Hover only on devices with hover capability (desktop) */
+@media (hover: hover) {
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Click-based flip works everywhere */
+.flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 

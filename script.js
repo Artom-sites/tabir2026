@@ -161,21 +161,21 @@ function initCountdown() {
  * FLIP CARDS - Toggle flip on click/tap
  */
 function initFlipCards() {
-    const flipWrappers = document.querySelectorAll('.feature-card-wrapper');
+    const flipCards = document.querySelectorAll('.flip-card');
 
-    flipWrappers.forEach(wrapper => {
-        wrapper.addEventListener('click', () => {
+    flipCards.forEach(card => {
+        card.addEventListener('click', () => {
             // Toggle flipped class on click
-            wrapper.classList.toggle('flipped');
+            card.classList.toggle('flipped');
         });
 
         // Also handle keyboard navigation
-        wrapper.setAttribute('tabindex', '0');
-        wrapper.setAttribute('role', 'button');
-        wrapper.addEventListener('keydown', (e) => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                wrapper.classList.toggle('flipped');
+                card.classList.toggle('flipped');
             }
         });
     });
