@@ -1896,7 +1896,7 @@ function initSoundToggle() {
     if (!soundToggle) return;
 
     // Create audio element
-    const audio = new Audio('media/snow-wind.mp3');
+    const audio = new Audio('media/zvuki-zima-u-ognya.mp3');
     audio.loop = true;
     audio.volume = 0.3; // Soft background volume
 
