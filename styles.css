@@ -1956,6 +1956,15 @@ button.meta-item {
     border-color: rgba(102, 126, 234, 0.5);
 }
 
+.question-modal-content .btn-confirm {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.4);
+}
+
+.question-modal-content .btn-confirm:hover {
+    box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.5);
+}
+
 /* Lightbox Navigation Arrows */
 .lightbox-prev,
 .lightbox-next {
