@@ -1523,7 +1523,7 @@ function initRegistrationForm() {
         if (data.children.length > 0) {
             message += `👶 <b>Діти:</b>\n`;
             data.children.forEach((child, index) => {
-                message += `   ${index + 1}. ${child.firstName} - ${child.age} років\n`;
+                message += `   ${index + 1}. ${child.firstName} - ${child.age}\n`;
             });
         } else {
             message += '👶 <b>Діти:</b> Без дітей\n';
