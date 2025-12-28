@@ -2576,7 +2576,7 @@ button.meta-item {
     align-items: center;
     justify-content: center;
     gap: 0;
-    margin: 28px auto 32px;
+    margin: 0 auto 32px;
     padding: 16px 28px;
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(12px);
