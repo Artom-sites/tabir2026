@@ -64,14 +64,35 @@ function initConfirmModal() {
         });
     }
 
-    // Calendar button - download .ics file
-    if (calendarBtn) {
+    // Calendar button - opens calendar choice modal
+    const calendarModal = document.getElementById('calendarModal');
+    const calendarModalCancel = document.getElementById('calendarModalCancel');
+    const calendarModalGoogle = document.getElementById('calendarModalGoogle');
+    const calendarModalIcs = document.getElementById('calendarModalIcs');
+
+    if (calendarBtn && calendarModal) {
         calendarBtn.addEventListener('click', () => {
-            const title = 'Додати в календар?';
-            const text = 'Зимовий табір: 9–12 лютого 2026';
-            // Use Google Calendar which works on all devices
-            const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Зимовий+Табір+для+молодих+сімей&dates=20260209T170000/20260212T130000&details=Християнський+табір+для+молодих+пар&location=Schwarzwald,+Germany';
-            showModal(title, text, calendarUrl, 'link');
+            calendarModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close calendar modal
+        const closeCalendarModal = () => {
+            calendarModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        calendarModalCancel.addEventListener('click', closeCalendarModal);
+
+        // Close after clicking an option
+        calendarModalGoogle.addEventListener('click', closeCalendarModal);
+        calendarModalIcs.addEventListener('click', closeCalendarModal);
+
+        // Click outside to close
+        calendarModal.addEventListener('click', (e) => {
+            if (e.target === calendarModal) {
+                closeCalendarModal();
+            }
         });
     }
 

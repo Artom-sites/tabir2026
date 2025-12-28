@@ -1896,6 +1896,20 @@ button.meta-item {
     box-shadow: 0 12px 28px -4px rgba(102, 126, 234, 0.5);
 }
 
+/* Calendar modal with multiple buttons */
+.calendar-buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.calendar-buttons a.btn-confirm {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
 /* Lightbox Navigation Arrows */
 .lightbox-prev,
 .lightbox-next {
