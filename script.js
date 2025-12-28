@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     init3DCards();
     initSnow();
+    initThemeToggle();
 });
 
 /**
@@ -1829,4 +1830,29 @@ function initSnow() {
     }
 
     animate();
+}
+
+/**
+ * THEME TOGGLE - Light/Dark Mode
+ */
+function initThemeToggle() {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    // Check saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+    }
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+
+        // Save preference
+        if (document.body.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 }

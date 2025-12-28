@@ -114,6 +114,87 @@
     }
 }
 
+/* Light Theme */
+body.light-mode {
+    --color-bg: #F5F3F0;
+    --color-bg-secondary: #EDEAE5;
+    --color-text: #1a1a1a;
+    --color-text-secondary: #4a4a4a;
+    --color-text-muted: #6a6a6a;
+    --glass-nav: rgba(0, 0, 0, 0.04);
+    --glass-nav-border: rgba(0, 0, 0, 0.08);
+    --glass-card: rgba(0, 0, 0, 0.04);
+    --glass-card-border: rgba(0, 0, 0, 0.1);
+    --glass-modal: rgba(255, 255, 255, 0.85);
+    --glass-modal-border: rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .hero-bg {
+    filter: brightness(1.1) saturate(1.1);
+}
+
+body.light-mode .snow-canvas {
+    opacity: 0.4;
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.mode-toggle svg {
+    width: 22px;
+    height: 22px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.mode-toggle .sun-icon {
+    display: none;
+}
+
+.mode-toggle .moon-icon {
+    display: block;
+}
+
+body.light-mode .mode-toggle {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .mode-toggle svg {
+    color: #1a1a1a;
+}
+
+body.light-mode .mode-toggle .sun-icon {
+    display: block;
+}
+
+body.light-mode .mode-toggle .moon-icon {
+    display: none;
+}
+
 /* Reset */
 *,
 *::before,
