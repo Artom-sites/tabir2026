@@ -64,11 +64,10 @@ function initConfirmModal() {
         });
     }
 
-    // Calendar button - opens calendar choice modal
+    // Calendar button - opens calendar modal
     const calendarModal = document.getElementById('calendarModal');
     const calendarModalCancel = document.getElementById('calendarModalCancel');
-    const calendarModalGoogle = document.getElementById('calendarModalGoogle');
-    const calendarModalIcs = document.getElementById('calendarModalIcs');
+    const calendarModalConfirm = document.getElementById('calendarModalConfirm');
 
     if (calendarBtn && calendarModal) {
         calendarBtn.addEventListener('click', () => {
@@ -84,9 +83,11 @@ function initConfirmModal() {
 
         calendarModalCancel.addEventListener('click', closeCalendarModal);
 
-        // Close after clicking an option
-        calendarModalGoogle.addEventListener('click', closeCalendarModal);
-        calendarModalIcs.addEventListener('click', closeCalendarModal);
+        // Confirm - navigate to .ics file (opens native calendar)
+        calendarModalConfirm.addEventListener('click', () => {
+            window.location.href = 'wintercamp.ics';
+            closeCalendarModal();
+        });
 
         // Click outside to close
         calendarModal.addEventListener('click', (e) => {
