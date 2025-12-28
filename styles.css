@@ -1957,7 +1957,8 @@ button.meta-item {
     border-color: rgba(102, 126, 234, 0.5);
 }
 
-.question-modal-content .btn-confirm {
+/* Modal button styles - glass effect */
+.confirm-modal-content .btn-confirm {
     background: rgba(102, 126, 234, 0.2);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -1965,9 +1966,13 @@ button.meta-item {
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.2),
         0 4px 16px rgba(102, 126, 234, 0.2);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.question-modal-content .btn-confirm:hover {
+.confirm-modal-content .btn-confirm:hover {
     background: rgba(102, 126, 234, 0.3);
     border-color: rgba(102, 126, 234, 0.5);
     box-shadow:
@@ -1975,12 +1980,12 @@ button.meta-item {
         0 8px 24px rgba(102, 126, 234, 0.3);
 }
 
-.question-modal-content .btn-cancel {
+.confirm-modal-content .btn-cancel {
     background: rgba(239, 68, 68, 0.15);
     border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.question-modal-content .btn-cancel:hover {
+.confirm-modal-content .btn-cancel:hover {
     background: rgba(239, 68, 68, 0.25);
     border-color: rgba(239, 68, 68, 0.45);
 }
