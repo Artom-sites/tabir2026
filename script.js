@@ -1759,8 +1759,12 @@ function initSnow() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    // Snowflake symbols
+    const snowSymbols = ['❄', '❅', '❆', '✻', '✼'];
+
     class Snowflake {
         constructor() {
+            this.symbol = snowSymbols[Math.floor(Math.random() * snowSymbols.length)];
             this.reset();
         }
 
@@ -1786,10 +1790,14 @@ function initSnow() {
         }
 
         draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.save();
+            ctx.translate(this.x, this.y);
             ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            ctx.fill();
+            ctx.font = `${this.size * 4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(this.symbol, 0, 0);
+            ctx.restore();
         }
     }
 
