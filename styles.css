@@ -1957,12 +1957,21 @@ button.meta-item {
 }
 
 .question-modal-content .btn-confirm {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .question-modal-content .btn-confirm:hover {
-    box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.5);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Lightbox Navigation Arrows */
