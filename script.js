@@ -69,20 +69,17 @@ function initConfirmModal() {
         calendarBtn.addEventListener('click', () => {
             const title = 'Додати в календар?';
             const text = 'Зимовий табір: 9–12 лютого 2026';
-            showModal(title, text, 'wintercamp.ics', 'download');
+            // Use Google Calendar which works on all devices
+            const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Зимовий+Табір+для+молодих+сімей&dates=20260209T170000/20260212T130000&details=Християнський+табір+для+молодих+пар&location=Schwarzwald,+Germany';
+            showModal(title, text, calendarUrl, 'link');
         });
     }
 
     // Confirm button
     confirmBtn.addEventListener('click', () => {
         if (pendingUrl) {
-            if (pendingMode === 'download') {
-                // Navigate to .ics file - this opens native calendar on mobile
-                window.location.href = pendingUrl;
-            } else {
-                // Open link in new tab
-                window.open(pendingUrl, '_blank');
-            }
+            // Open link in new tab
+            window.open(pendingUrl, '_blank');
         }
         hideModal();
     });
@@ -164,12 +161,30 @@ function initFlipCards() {
     const flipCards = document.querySelectorAll('.flip-card');
 
     flipCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Toggle flipped class on click
+        // Handle both click and touch
+        const handleFlip = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             card.classList.toggle('flipped');
+        };
+
+        card.addEventListener('click', handleFlip);
+
+        // Touch event for better Android support
+        let touchStarted = false;
+        card.addEventListener('touchstart', () => {
+            touchStarted = true;
+        }, { passive: true });
+
+        card.addEventListener('touchend', (e) => {
+            if (touchStarted) {
+                e.preventDefault();
+                card.classList.toggle('flipped');
+                touchStarted = false;
+            }
         });
 
-        // Also handle keyboard navigation
+        // Keyboard navigation
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         card.addEventListener('keydown', (e) => {
