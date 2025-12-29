@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     init3DCards();
     initSnow();
     initSoundToggle();
-    initTypingEffect();
     initCounterAnimation();
 });
 
