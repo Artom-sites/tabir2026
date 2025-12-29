@@ -1124,26 +1124,30 @@ function initLightbox() {
 
     if (!lightbox || !lightboxImage || !lightboxClose) return;
 
-    // Collect all gallery items (images and videos)
+    // Collect all gallery items (images and videos) in DOM order
     const allGalleryItems = [];
 
-    // Get images
-    document.querySelectorAll('.gallery-item:not(.gallery-item-video) img').forEach(img => {
-        allGalleryItems.push({ type: 'image', src: img.src, alt: img.alt, element: img });
-    });
-
-    // Get videos
-    document.querySelectorAll('.gallery-item-video').forEach(videoItem => {
-        const video = videoItem.querySelector('video');
-        const source = video?.querySelector('source');
-        const poster = video?.getAttribute('poster') || '';
-        if (source) {
-            allGalleryItems.push({
-                type: 'video',
-                src: source.src,
-                poster: poster,
-                element: videoItem
-            });
+    // Get all gallery items in DOM order
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        if (item.classList.contains('gallery-item-video')) {
+            // Video item
+            const video = item.querySelector('video');
+            const source = video?.querySelector('source');
+            const poster = video?.getAttribute('poster') || '';
+            if (source) {
+                allGalleryItems.push({
+                    type: 'video',
+                    src: source.src,
+                    poster: poster,
+                    element: item
+                });
+            }
+        } else {
+            // Image item
+            const img = item.querySelector('img');
+            if (img) {
+                allGalleryItems.push({ type: 'image', src: img.src, alt: img.alt, element: item });
+            }
         }
     });
 
@@ -1755,7 +1759,7 @@ function initSnow() {
 
     const ctx = canvas.getContext('2d');
     let snowflakes = [];
-    const maxSnowflakes = 80;
+    const maxSnowflakes = 20;
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
