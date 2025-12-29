@@ -3645,6 +3645,13 @@ button.meta-item {
     display: block;
 }
 
+.map-iframe {
+    width: 100%;
+    height: 200px;
+    border: 0;
+    display: block;
+}
+
 .map-overlay {
     position: absolute;
     bottom: 12px;
