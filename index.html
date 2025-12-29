@@ -504,11 +504,15 @@
             <p id="confirmModalText">Ви хочете продовжити?</p>
             <!-- Interactive Map -->
             <div class="modal-map" id="modalMap">
-                <iframe
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=7.8%2C47.8%2C8.4%2C48.2&layer=mapnik&marker=48.0%2C8.1"
-                    style="border: 0; width: 100%; height: 200px; border-radius: 12px; margin-bottom: 16px;"
-                    loading="lazy">
-                </iframe>
+                <div class="map-container">
+                    <img src="https://api.mapbox.com/styles/v1/mapbox/dark-v11/static/pin-l+667eea(8.614,51.291)/8.614,51.291,10,0/400x200@2x?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
+                        alt="Willingen, Germany" class="map-image"
+                        onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/ffffff?text=Willingen,+Germany'">
+                    <div class="map-overlay">
+                        <span class="map-pin">📍</span>
+                        <span class="map-label">Willingen, Німеччина</span>
+                    </div>
+                </div>
             </div>
             <div class="confirm-modal-buttons">
                 <button class="btn-cancel" id="confirmModalCancel">Скасувати</button>

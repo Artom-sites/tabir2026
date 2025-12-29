@@ -3628,3 +3628,42 @@ button.meta-item {
 .counter-animated {
     transition: transform 0.3s ease;
 }
+
+/* Modern Map Container */
+.map-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.map-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.map-pin {
+    font-size: 1rem;
+}
+
+.map-label {
+    font-weight: 500;
+}
