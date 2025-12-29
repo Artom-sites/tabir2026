@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     init3DCards();
     initSnow();
     initSoundToggle();
+    initTypingEffect();
+    initCounterAnimation();
 });
 
 /**
@@ -1923,5 +1925,93 @@ function initSoundToggle() {
             audio.play().catch(e => console.log('Audio play failed:', e));
         }
     });
+}
+
+/**
+ * TYPING EFFECT - Animate hero title typing
+ */
+function initTypingEffect() {
+    const heroTitle = document.querySelector('.hero-title');
+    if (!heroTitle) return;
+
+    // Store original HTML for reset
+    const originalHTML = heroTitle.innerHTML;
+    const textContent = heroTitle.textContent;
+
+    // Only run typing effect on first load
+    if (sessionStorage.getItem('typingDone')) {
+        return;
+    }
+
+    // Clear and prepare for typing
+    heroTitle.innerHTML = '';
+    heroTitle.classList.add('typing-cursor');
+
+    let charIndex = 0;
+    const typingSpeed = 50; // ms per character
+
+    function typeChar() {
+        if (charIndex < textContent.length) {
+            heroTitle.textContent += textContent.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, typingSpeed);
+        } else {
+            // Typing complete - restore HTML and remove cursor
+            setTimeout(() => {
+                heroTitle.innerHTML = originalHTML;
+                heroTitle.classList.remove('typing-cursor');
+                sessionStorage.setItem('typingDone', 'true');
+            }, 500);
+        }
+    }
+
+    // Start typing after a brief delay
+    setTimeout(typeChar, 500);
+}
+
+/**
+ * COUNTER ANIMATION - Animate numbers counting up
+ */
+function initCounterAnimation() {
+    const counters = document.querySelectorAll('[data-counter]');
+    if (counters.length === 0) return;
+
+    const animateCounter = (element) => {
+        const target = parseInt(element.dataset.counter);
+        const duration = 2000; // 2 seconds
+        const start = 0;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Ease out cubic
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(start + (target - start) * easeOut);
+
+            element.textContent = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target;
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    };
+
+    // Use IntersectionObserver to trigger animation when visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                animateCounter(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
 }
 

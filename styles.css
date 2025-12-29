@@ -3552,3 +3552,79 @@ button.meta-item {
         transform: rotate(360deg);
     }
 }
+
+/* ==========================================
+   VISUAL EFFECTS - Gradient, Pulse, Typing
+   ========================================== */
+
+/* Gradient Text for Titles */
+.gradient-text {
+    background: linear-gradient(135deg,
+            #fff 0%,
+            #a8d8ff 25%,
+            #fff 50%,
+            #ffd4e5 75%,
+            #fff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Pulse Glow for CTA Buttons */
+.btn-primary {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 15px rgba(102, 126, 234, 0.4),
+            0 0 0 0 rgba(102, 126, 234, 0.4);
+    }
+
+    50% {
+        box-shadow:
+            0 6px 25px rgba(102, 126, 234, 0.6),
+            0 0 20px 5px rgba(102, 126, 234, 0.2);
+    }
+}
+
+/* Typing Effect Cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+    color: var(--accent);
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Counter Animation */
+.counter-value {
+    display: inline-block;
+    min-width: 1.5ch;
+}
+
+.counter-animated {
+    transition: transform 0.3s ease;
+}
