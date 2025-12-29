@@ -540,8 +540,8 @@ body.alternative-design .sun-icon {
     top: 20px;
     right: 20px;
     z-index: 1000;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -571,8 +571,8 @@ body.alternative-design .sun-icon {
     top: 20px;
     left: 20px;
     z-index: 1000;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.1);
@@ -641,11 +641,20 @@ body.alternative-design .theme-toggle:hover {
 }
 
 @media (max-width: 640px) {
-    .theme-toggle {
+
+    .theme-toggle,
+    .sound-toggle {
         top: 16px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .theme-toggle {
         right: 16px;
-        width: 48px;
-        height: 48px;
+    }
+
+    .sound-toggle {
+        left: 16px;
     }
 
     .theme-icon {
