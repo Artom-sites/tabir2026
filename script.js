@@ -272,43 +272,12 @@ function initFlipCards() {
     };
 
     flipCards.forEach(card => {
-        // Track touch position to detect swipe vs tap
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let isTap = false;
-
-        card.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0];
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-            isTap = true;
-        }, { passive: true });
-
-        card.addEventListener('touchmove', (e) => {
-            if (!isTap) return;
-            const touch = e.touches[0];
-            const deltaX = Math.abs(touch.clientX - touchStartX);
-            const deltaY = Math.abs(touch.clientY - touchStartY);
-            // If moved more than threshold, it's a swipe not a tap
-            if (deltaX > SWIPE_THRESHOLD || deltaY > SWIPE_THRESHOLD) {
-                isTap = false;
-            }
-        }, { passive: true });
-
-        card.addEventListener('touchend', (e) => {
-            if (isTap) {
-                e.preventDefault();
-                toggleCard(card);
-            }
-            isTap = false;
-        });
-
-        // Desktop click
+        // Simple stable click handler (works for touch and mouse)
+        // touch-action: manipulation in CSS prevents 300ms delay
         card.addEventListener('click', (e) => {
-            // Only handle click on non-touch devices
-            if (e.pointerType !== 'touch') {
-                toggleCard(card);
-            }
+            // Prevent default behavior if it's a link (though it's a div)
+            // e.preventDefault(); 
+            toggleCard(card);
         });
 
         // Keyboard navigation
