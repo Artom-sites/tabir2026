@@ -1579,11 +1579,12 @@ function initRegistrationForm() {
         // Format message
         const message = formatTelegramMessage(data);
 
-        // Prepare WhatsApp Confirmation Link
+        // Prepare Telegram Confirmation Link
         // Remove all non-digits from phone for the link
         const cleanPhone = data.phone.replace(/\D/g, '');
-        const confirmText = encodeURIComponent(`Вітаємо, ${data.familyName}! 🏔️\nВаша реєстрація на зимовий табір підтверджена! ✅\nЧекаємо вас 9 лютого.`);
-        const waLink = `https://wa.me/${cleanPhone}?text=${confirmText}`;
+        // Note: Telegram doesn't officially support pre-filled text for direct phone links like WhatsApp does
+        // But we can open the chat
+        const tgLink = `https://t.me/+${cleanPhone}`;
 
         const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
@@ -1601,8 +1602,8 @@ function initRegistrationForm() {
                         inline_keyboard: [
                             [
                                 {
-                                    text: "✅ Підтвердити (WhatsApp)",
-                                    url: waLink
+                                    text: "💬 Написати в Telegram",
+                                    url: tgLink
                                 }
                             ]
                         ]
