@@ -818,6 +818,7 @@ const translations = {
             }
         },
         countdown: {
+            title: '⏰ До закінчення реєстрації',
             label: 'До закінчення реєстрації:',
             days: 'днів',
             hours: 'годин',
@@ -1030,6 +1031,7 @@ const translations = {
             }
         },
         countdown: {
+            title: '⏰ До окончания регистрации',
             label: 'До окончания регистрации:',
             days: 'дней',
             hours: 'часов',

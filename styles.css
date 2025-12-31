@@ -2667,6 +2667,16 @@ button.meta-item {
 }
 
 /* Countdown Timer - Editorial Style */
+/* Countdown Title - Clear label above timer */
+.countdown-title {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
 /* Countdown Timer - Glassmorphism Pill Bar */
 .countdown-pill {
     display: inline-flex;
