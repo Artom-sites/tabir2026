@@ -1534,7 +1534,32 @@ function initRegistrationForm() {
 
         // Send to Telegram
         sendToTelegram(data);
+
+        // Send to Google Sheets (if configured)
+        sendToGoogleSheets(data);
     });
+
+    // TODO: Вставте сюди URL вашого Google Apps Script
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyI4lqjAtZyTuc82T5rxSqmPki08LxDY1Todolg0UsBtBWcAtpZ9pcqbjdJihAF-IzZ/exec';
+
+    async function sendToGoogleSheets(data) {
+        if (!GOOGLE_SCRIPT_URL) return;
+
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Important for Google Forms/Scripts
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            console.log('✅ Заявка відправлена в Google Sheets');
+        } catch (error) {
+            console.error('❌ Помилка Google Sheets:', error);
+            // Don't block success flow if Sheets fails
+        }
+    }
 
     async function sendToTelegram(data) {
         // TODO: Замініть на ваші дані
