@@ -1117,7 +1117,14 @@ const translations = {
 
 // Список доступних мов для перемикання
 const languages = ['ua', 'ru'];
-let currentLang = localStorage.getItem('language') || 'ua';
+
+// Detect browser language if no saved preference
+const browserLang = navigator.language || navigator.userLanguage;
+const defaultLang = (browserLang && browserLang.toLowerCase().startsWith('ru')) ? 'ru' : 'ua';
+
+let currentLang = localStorage.getItem('language') || defaultLang;
+
+// Safety check
 if (!languages.includes(currentLang)) currentLang = 'ua';
 
 function initLanguageToggle() {
