@@ -272,11 +272,39 @@ function initFlipCards() {
     };
 
     flipCards.forEach(card => {
-        // Simple stable click handler (works for touch and mouse)
-        // touch-action: manipulation in CSS prevents 300ms delay
+        let isScrolling = false;
+        let startX = 0;
+        let startY = 0;
+
+        // Track touch to distinguish scroll vs tap
+        card.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            isScrolling = false;
+        }, { passive: true });
+
+        card.addEventListener('touchmove', (e) => {
+            if (isScrolling) return; // Already detected
+
+            const touch = e.touches[0];
+            const diffX = Math.abs(touch.clientX - startX);
+            const diffY = Math.abs(touch.clientY - startY);
+
+            // If finger moved more than 10px, assume scrolling
+            if (diffX > 10 || diffY > 10) {
+                isScrolling = true;
+            }
+        }, { passive: true });
+
+        // Simple stable click handler
+        // touch-action: manipulation in CSS handles native scroll detection
+        // but we add isScrolling check as extra safety
         card.addEventListener('click', (e) => {
-            // Prevent default behavior if it's a link (though it's a div)
-            // e.preventDefault(); 
+            if (isScrolling) {
+                isScrolling = false; // Reset
+                return; // Ignore click if it was a swipe
+            }
             toggleCard(card);
         });
 

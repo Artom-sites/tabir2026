@@ -1137,7 +1137,7 @@ button.meta-item {
 }
 
 /* Hover only on devices with hover capability (desktop) */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
     }
