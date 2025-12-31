@@ -1881,11 +1881,15 @@ function initSnow() {
             this.speed = Math.random() * 1 + 0.5;
             this.wind = Math.random() * 0.5 - 0.25;
             this.opacity = Math.random() * 0.6 + 0.3;
+            // Rotation
+            this.angle = Math.random() * Math.PI * 2;
+            this.spin = Math.random() * 0.05 - 0.025; // Random spin speed
         }
 
         update() {
             this.y += this.speed;
             this.x += this.wind;
+            this.angle += this.spin; // Update rotation
 
             if (this.y > canvas.height) {
                 this.reset();
@@ -1898,6 +1902,7 @@ function initSnow() {
         draw() {
             ctx.save();
             ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle); // Apply rotation
             ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
             ctx.font = `${this.size * 4}px Arial`;
             ctx.textAlign = 'center';
