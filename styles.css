@@ -1055,8 +1055,7 @@ button.meta-item {
 /* Hide scroll hint on short screens */
 @media (max-height: 600px) {
     .scroll-hint {
-        bottom: 120px;
-        /* Increased from 40px/80px to avoid overlapping with meta-items */
+        display: none;
     }
 }
 
@@ -1069,6 +1068,11 @@ button.meta-item {
 }
 
 @media (max-width: 768px) {
+    .scroll-hint {
+        bottom: 120px;
+        /* Increased to avoid overlap on mobile */
+    }
+
     .section {
         padding: var(--space-md) 0;
     }
