@@ -1866,7 +1866,8 @@ function initSnow() {
     window.addEventListener('resize', resizeCanvas);
 
     // Snowflake symbols
-    const snowSymbols = ['❄', '❅', '❆', '✻', '✼'];
+    // Snowflake symbols (classics only)
+    const snowSymbols = ['❄', '❅', '❆'];
 
     class Snowflake {
         constructor() {
