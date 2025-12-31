@@ -215,21 +215,13 @@ body.alternative-design {
 /* Fixed mountain background - iOS compatible */
 .hero-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 110vh;
-    /* Oversized to prevent any bottom gap jumps */
-    /* Dynamic viewport height for mobile */
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background:
         linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-        url('media/hero-bg-new.png') center center/cover no-repeat;
-    background-attachment: scroll;
-    pointer-events: none;
-    z-index: -1;
-    -webkit-transform: translateZ(0);
+        url('media/hero-bg-new.png') center / cover no-repeat;
     transform: translateZ(0);
-    will-change: transform;
 }
 
 /* Aurora effects removed - using mountain photo only */
