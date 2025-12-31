@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Зимовий Табір у Горах | 4 дні для молодих сімей</title>
+    <title data-i18n="page.title">Зимовий Табір у Горах | 4 дні для молодих сімей</title>
     <meta name="description"
         content="4-денний християнський табір для молодих пар та сімей у горах Німеччини. Лижі, баня, спорт, бізнес-тренінги та духовне зростання.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -535,13 +535,13 @@
                     </iframe>
                     <div class="map-overlay">
                         <span class="map-pin">📍</span>
-                        <span class="map-label">Willingen, Німеччина</span>
+                        <span class="map-label" data-i18n="hero.location">Willingen, Німеччина</span>
                     </div>
                 </div>
             </div>
             <div class="confirm-modal-buttons">
-                <button class="btn-cancel" id="confirmModalCancel">Скасувати</button>
-                <button class="btn-confirm" id="confirmModalConfirm">Відкрити</button>
+                <button class="btn-cancel" id="confirmModalCancel" data-i18n="modals.confirm.cancel">Скасувати</button>
+                <button class="btn-confirm" id="confirmModalConfirm" data-i18n="modals.confirm.open">Відкрити</button>
             </div>
         </div>
     </div>
@@ -549,11 +549,13 @@
     <!-- Calendar Modal -->
     <div class="confirm-modal" id="calendarModal">
         <div class="confirm-modal-content">
-            <h3>📅 Додати в календар</h3>
-            <p>Зимовий табір: 9–12 лютого 2026</p>
+            <h3 data-i18n="modals.calendar.title">📅 Додати в календар</h3>
+            <p data-i18n="modals.calendar.text">Зимовий табір: 9–12 лютого 2026</p>
             <div class="confirm-modal-buttons">
-                <button class="btn-cancel" id="calendarModalCancel">Скасувати</button>
-                <a href="wintercamp.ics" class="btn-confirm" id="calendarModalAdd">Додати</a>
+                <button class="btn-cancel" id="calendarModalCancel"
+                    data-i18n="modals.calendar.cancel">Скасувати</button>
+                <a href="wintercamp.ics" class="btn-confirm" id="calendarModalAdd"
+                    data-i18n="modals.calendar.add">Додати</a>
             </div>
         </div>
     </div>
@@ -561,13 +563,15 @@
     <!-- Question Modal -->
     <div class="confirm-modal" id="questionModal">
         <div class="confirm-modal-content question-modal-content">
-            <h3>Анонімне запитання ❓</h3>
-            <p>Відповідь почуєш у таборі</p>
+            <h3 data-i18n="modals.question.title">Анонімне запитання ❓</h3>
+            <p data-i18n="modals.question.text">Відповідь почуєш у таборі</p>
             <form id="questionForm">
-                <textarea id="questionText" placeholder="Твоє запитання..." rows="4" required></textarea>
+                <textarea id="questionText" placeholder="Твоє запитання..." rows="4" required
+                    data-i18n-placeholder="modals.question.placeholder"></textarea>
                 <div class="confirm-modal-buttons">
-                    <button type="button" class="btn-cancel" id="questionModalCancel">Скасувати</button>
-                    <button type="submit" class="btn-confirm">Відправити</button>
+                    <button type="button" class="btn-cancel" id="questionModalCancel"
+                        data-i18n="modals.question.cancel">Скасувати</button>
+                    <button type="submit" class="btn-confirm" data-i18n="modals.question.submit">Відправити</button>
                 </div>
             </form>
         </div>
