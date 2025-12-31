@@ -839,11 +839,7 @@ a {
 }
 
 /* Hero Background */
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
+
 
 .hero-content {
     position: relative;
