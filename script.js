@@ -1579,6 +1579,12 @@ function initRegistrationForm() {
         // Format message
         const message = formatTelegramMessage(data);
 
+        // Prepare WhatsApp Confirmation Link
+        // Remove all non-digits from phone for the link
+        const cleanPhone = data.phone.replace(/\D/g, '');
+        const confirmText = encodeURIComponent(`Вітаємо, ${data.familyName}! 🏔️\nВаша реєстрація на зимовий табір підтверджена! ✅\nЧекаємо вас 9 лютого.`);
+        const waLink = `https://wa.me/${cleanPhone}?text=${confirmText}`;
+
         const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
         try {
@@ -1590,7 +1596,17 @@ function initRegistrationForm() {
                 body: JSON.stringify({
                     chat_id: TELEGRAM_CHAT_ID,
                     text: message,
-                    parse_mode: 'HTML'
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                {
+                                    text: "✅ Підтвердити (WhatsApp)",
+                                    url: waLink
+                                }
+                            ]
+                        ]
+                    }
                 })
             });
 
