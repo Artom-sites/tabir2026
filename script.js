@@ -1212,7 +1212,11 @@ function initLightbox() {
 
         // Stop any playing video
         lightboxVideo.pause();
-        lightboxVideo.src = '';
+        lightboxVideo.currentTime = 0;
+        lightboxVideo.src = "";
+
+        // Also pause all grid videos to prevent background audio
+        document.querySelectorAll('.gallery-video').forEach(vid => vid.pause());
 
         if (item.type === 'image') {
             lightboxImage.src = item.src;
@@ -1224,7 +1228,11 @@ function initLightbox() {
             lightboxVideo.removeAttribute('poster'); // No poster in lightbox
             lightboxImage.style.display = 'none';
             lightboxVideo.style.display = 'block';
-            lightboxVideo.play(); // Autoplay video
+
+            // Small timeout to ensure clean state
+            setTimeout(() => {
+                lightboxVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            }, 50);
         }
 
         counter.textContent = `${currentIndex + 1} / ${allGalleryItems.length}`;
@@ -1277,7 +1285,8 @@ function initLightbox() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
         lightboxVideo.pause();
-        lightboxVideo.src = '';
+        lightboxVideo.currentTime = 0;
+        lightboxVideo.src = "";
     };
 
     lightboxClose.addEventListener('click', closeLightbox);
