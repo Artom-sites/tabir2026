@@ -60,14 +60,25 @@ function initConfirmModal() {
 
     // Location button
     if (locationBtn) {
-        locationBtn.addEventListener('click', () => {
+        locationBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             const url = locationBtn.dataset.url;
-            const title = locationBtn.dataset.modalTitle || 'Відкрити посилання?';
-            const text = locationBtn.dataset.modalText || '';
+
+            // Get current language
+            const lang = document.documentElement.lang || 'ua';
+            const t = translations[lang] || translations.ua;
+
+            // Use translations if available, fallback to dataset
+            const title = t.modals && t.modals.map ? t.modals.map.title : locationBtn.dataset.modalTitle;
+            const text = t.modals && t.modals.map ? t.modals.map.text : locationBtn.dataset.modalText;
+
             showModal(title, text, url, 'link');
+
+            // Show map overlay if it exists
+            const modalMap = document.getElementById('modalMap');
+            if (modalMap) modalMap.style.display = 'block';
         });
     }
-
     // Calendar button - opens calendar modal
     const calendarModal = document.getElementById('calendarModal');
     const calendarModalCancel = document.getElementById('calendarModalCancel');
@@ -853,6 +864,10 @@ const translations = {
                 placeholder: 'Твоє запитання...',
                 submit: 'Відправити',
                 cancel: 'Скасувати'
+            },
+            map: {
+                title: 'Відкрити Google Maps?',
+                text: 'Переглянути розташування табору у Willingen'
             }
         }
     },
@@ -1092,6 +1107,10 @@ const translations = {
                 placeholder: 'Твой вопрос...',
                 submit: 'Отправить',
                 cancel: 'Отмена'
+            },
+            map: {
+                title: 'Открыть Google Maps?',
+                text: 'Посмотреть расположение лагеря в Willingen'
             }
         }
     }
@@ -1980,7 +1999,7 @@ function initSoundToggle() {
     if (!soundToggle) return;
 
     // Create audio element
-    const audio = new Audio('media/zvuki-zima-u-ognya.mp3');
+    const audio = new Audio('media/fireplace-loop-original-noise-178209.mp3');
     audio.loop = true;
     audio.volume = 0.3; // Soft background volume
 
