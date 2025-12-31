@@ -222,7 +222,7 @@ body.alternative-design {
     /* Dynamic viewport height for mobile */
     background:
         linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-        url('media/hero-bg-new.webp') center center/cover no-repeat;
+        url('media/hero-bg-new.png') center center/cover no-repeat;
     background-attachment: scroll;
     pointer-events: none;
     z-index: -1;
