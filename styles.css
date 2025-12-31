@@ -1071,8 +1071,7 @@ button.meta-item {
 
 @media (max-width: 768px) {
     .scroll-hint {
-        bottom: 100px;
-        /* Adjusted to user preference */
+        bottom: 110px;
     }
 
     .section {
