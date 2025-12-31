@@ -2054,7 +2054,7 @@ function initSoundToggle() {
     if (!soundToggle) return;
 
     // Create audio element
-    const audio = new Audio('media/fireplace-loop-original-noise-178209.mp3');
+    const audio = new Audio('media/fireplace-opt.mp3');
     audio.loop = true;
     audio.volume = 0.3; // Soft background volume
 
