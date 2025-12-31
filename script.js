@@ -517,30 +517,12 @@ function initStickyCta() {
 }
 
 /**
- * PARALLAX EFFECT - Simple parallax for hero
+ * PARALLAX EFFECT - Disabled to keep background fixed
+ * The hero-bg is now position:fixed and should not move
  */
 function initParallax() {
-    const heroBg = document.querySelector('.hero-bg');
-    if (!heroBg) return;
-
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                const parallaxSpeed = 0.5;
-
-                if (scrolled < window.innerHeight) {
-                    heroBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-                    heroBg.style.opacity = 1 - (scrolled / window.innerHeight) * 0.6;
-                }
-
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
+    // Parallax disabled - hero-bg is fixed and should not transform
+    return;
 }
 
 /**
