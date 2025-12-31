@@ -1055,7 +1055,8 @@ button.meta-item {
 /* Hide scroll hint on short screens */
 @media (max-height: 600px) {
     .scroll-hint {
-        display: none;
+        bottom: 120px;
+        /* Increased from 40px/80px to avoid overlapping with meta-items */
     }
 }
 
