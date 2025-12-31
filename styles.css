@@ -218,9 +218,11 @@ body.alternative-design {
     inset: 0;
     z-index: -1;
     pointer-events: none;
+
     background:
         linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
         url('media/hero-bg-new.png') center / cover no-repeat;
+
     transform: translateZ(0);
 }
 
@@ -821,7 +823,6 @@ a {
 .hero {
     position: relative;
     min-height: 100svh;
-    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
