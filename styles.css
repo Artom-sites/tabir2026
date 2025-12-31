@@ -2685,14 +2685,36 @@ button.meta-item {
     gap: 0;
     margin: 0 auto 32px;
     padding: 16px 28px;
-    background: rgba(255, 255, 255, 0.04);
+    background: linear-gradient(135deg, rgba(100, 150, 200, 0.15) 0%, rgba(80, 120, 180, 0.1) 50%, rgba(100, 150, 200, 0.15) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(100, 180, 255, 0.3);
     border-radius: 999px;
     box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        0 0 20px rgba(100, 180, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: countdownPulse 3s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 24px rgba(0, 0, 0, 0.15),
+            0 0 20px rgba(100, 180, 255, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border-color: rgba(100, 180, 255, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 4px 24px rgba(0, 0, 0, 0.15),
+            0 0 30px rgba(100, 180, 255, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border-color: rgba(100, 180, 255, 0.5);
+    }
 }
 
 .countdown-pill .countdown-item {
