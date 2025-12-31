@@ -2677,6 +2677,52 @@ button.meta-item {
     letter-spacing: 0.5px;
 }
 
+/* Countdown Timer - Inline Compact Style */
+.countdown-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0 28px;
+    padding: 16px 24px;
+    background: rgba(100, 150, 200, 0.1);
+    border: 1px solid rgba(100, 180, 255, 0.2);
+    border-radius: 12px;
+}
+
+.countdown-label-inline {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+.countdown-numbers {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.countdown-inline .countdown-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-display);
+}
+
+.countdown-unit {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 4px;
+}
+
+.countdown-dot {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2rem;
+    margin: 0 2px;
+}
+
 /* Countdown Timer - Glassmorphism Pill Bar */
 .countdown-pill {
     display: inline-flex;
