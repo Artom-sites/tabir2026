@@ -786,6 +786,7 @@ const translations = {
                 childName: 'Ім\'я дитини',
                 childAge: 'Вік',
                 agePlaceholder: 'напр. 2 р. або 5 міс.',
+                childLabel: 'Дитина',
                 comments: 'Коментарі або запитання',
                 commentsPlaceholder: 'Додаткова інформація, особливі потреби, запитання...'
             },
@@ -1029,6 +1030,7 @@ const translations = {
                 childName: 'Имя ребёнка',
                 childAge: 'Возраст',
                 agePlaceholder: 'напр. 2 г. или 5 мес.',
+                childLabel: 'Ребёнок',
                 comments: 'Комментарии или вопросы',
                 commentsPlaceholder: 'Дополнительная информация, особые потребности, вопросы...'
             },
@@ -1620,7 +1622,7 @@ function initRegistrationForm() {
         return `
             <div class="child-entry">
                 <div class="child-entry-header">
-                    <h4 class="child-entry-title">${t.childName || 'Дитина'}</h4>
+                    <h4 class="child-entry-title">${t.childLabel || 'Дитина'} ${childrenContainer.children.length + 1}</h4>
                     <button type="button" class="btn-remove-child" aria-label="Видалити дитину">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1644,10 +1646,11 @@ function initRegistrationForm() {
 
     function renumberChildren() {
         const childEntries = childrenContainer.querySelectorAll('.child-entry');
+        const t = translations[currentLang].register.form;
         childEntries.forEach((entry, index) => {
             const title = entry.querySelector('.child-entry-title');
             if (title) {
-                title.textContent = `Дитина ${index + 1}`;
+                title.textContent = `${t.childLabel || 'Дитина'} ${index + 1}`;
             }
         });
     }
