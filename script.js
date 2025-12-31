@@ -1551,6 +1551,16 @@ function initRegistrationForm() {
                 console.log('✅ Заявка відправлена в Telegram');
                 // Show success message
                 form.style.display = 'none';
+
+                // Hide header and countdown
+                const registerTitle = document.querySelector('.register-content h2');
+                const countdownTitle = document.querySelector('.countdown-title');
+                const countdownPill = document.getElementById('formCountdown');
+
+                if (registerTitle) registerTitle.style.display = 'none';
+                if (countdownTitle) countdownTitle.style.display = 'none';
+                if (countdownPill) countdownPill.style.display = 'none';
+
                 formSuccess.style.display = 'block';
                 // Launch confetti celebration! 🎊
                 launchConfetti();
