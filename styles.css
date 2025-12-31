@@ -1071,8 +1071,8 @@ button.meta-item {
 
 @media (max-width: 768px) {
     .scroll-hint {
-        bottom: 30px;
-        /* Reduced to sit below content, checking overlap */
+        bottom: 100px;
+        /* Adjusted to user preference */
     }
 
     .section {
