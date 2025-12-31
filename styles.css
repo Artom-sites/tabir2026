@@ -212,7 +212,7 @@ body.alternative-design {
     --radius-xl: 40px;
 }
 
-/* Fixed mountain background - iOS compatible */
+/* Fixed mountain background - iOS Safari compatible */
 .hero-bg {
     position: fixed;
     inset: 0;
@@ -222,8 +222,6 @@ body.alternative-design {
     background:
         linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
         url('media/hero-bg-optimized.webp') center bottom / cover no-repeat;
-
-    transform: translateZ(0);
 }
 
 /* Aurora effects removed - using mountain photo only */
