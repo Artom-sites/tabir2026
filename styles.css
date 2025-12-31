@@ -914,7 +914,7 @@ button.hero-eyebrow {
 .hero-subtitle {
     font-size: clamp(1rem, 3vw, 1.25rem);
     color: var(--color-text-secondary);
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
     line-height: 1.6;
     max-width: 600px;
     margin-left: auto;
