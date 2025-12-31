@@ -1005,6 +1005,8 @@ button.meta-item {
     bottom: max(var(--space-3xl), env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
+    /* Ensure it stays above other elements */
     display: flex;
     flex-direction: column;
     align-items: center;
