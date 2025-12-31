@@ -213,7 +213,6 @@ body.alternative-design {
 }
 
 /* Fixed mountain background - iOS compatible */
-/* Fixed mountain background - iOS compatible */
 .hero-bg {
     position: fixed;
     top: 0;
@@ -830,6 +829,7 @@ a {
 .hero {
     position: relative;
     min-height: 100svh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
