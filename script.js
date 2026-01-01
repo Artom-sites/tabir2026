@@ -1514,8 +1514,17 @@ function initRegistrationForm() {
         // Get country code from selector (e.g. "+49" or "+380")
         const countryCodeEl = document.getElementById('selectedCode');
         const countryCode = countryCodeEl ? countryCodeEl.textContent.trim() : '+49';
-        const rawPhone = formData.get('phone');
-        const fullPhone = countryCode + rawPhone.replace(/^0+/, ''); // Remove leading zeros from local number
+        const rawPhone = formData.get('phone').trim();
+
+        // Check if user already entered full international number
+        let fullPhone;
+        if (rawPhone.startsWith('+') || rawPhone.startsWith('00')) {
+            // User entered full number with country code - use as is (normalize 00 to +)
+            fullPhone = rawPhone.replace(/^00/, '+');
+        } else {
+            // Local number - add country code and remove leading zero
+            fullPhone = countryCode + rawPhone.replace(/^0+/, '');
+        }
 
         const data = {
             familyName: formData.get('familyName'),
