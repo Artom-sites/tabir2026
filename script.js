@@ -1511,12 +1511,18 @@ function initRegistrationForm() {
             age: childAges[index]
         }));
 
+        // Get country code from selector (e.g. "+49" or "+380")
+        const countryCodeEl = document.getElementById('selectedCode');
+        const countryCode = countryCodeEl ? countryCodeEl.textContent.trim() : '+49';
+        const rawPhone = formData.get('phone');
+        const fullPhone = countryCode + rawPhone.replace(/^0+/, ''); // Remove leading zeros from local number
+
         const data = {
             familyName: formData.get('familyName'),
             husbandName: formData.get('husbandName'),
             wifeName: formData.get('wifeName'),
             phoneCountry: formData.get('phoneCountry'),
-            phone: formData.get('phone'),
+            phone: fullPhone, // Now includes country code
             children: children,
             comments: formData.get('comments')
         };
